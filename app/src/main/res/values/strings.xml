@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">TMS</string>
+    <string name="reservation_mobile_no">Mobile No</string>
+    <string name="reservation_name">Name</string>
+    <string name="reservation_no_of_people">No of People</string>
+    <string name="reservation_email_id">Email Id</string>
+    <string name="reservation_special_requirement">Specific Requirement</string>
+    <string name="reservation_waiting_list">Waiting List</string>
+    <string name="reservation_status_waiting">Waiting</string>
 </resources>
