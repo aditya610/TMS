@@ -2,7 +2,7 @@ package com.bignerdranch.android.tms.services.viewModel
 
 import androidx.lifecycle.*
 import com.bignerdranch.android.tms.models.entities.User
-import com.bignerdranch.android.tms.models.respository.repo.UserRepository
+import com.bignerdranch.android.tms.models.respository.room.user.UserRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -24,7 +24,15 @@ class UserDetailViewModel : ViewModel() {
     fun addUser(user: User)
     {
         viewModelScope.launch {
-            userRepository.addUser(user)
+            val data: LiveData<User> = userRepository.getUserByMobileNo(user.mobileNo)
+            if (data == null)
+            {
+                userRepository.addUser(user)
+            }
+            else {
+
+                userRepository.updateUser(user)
+            }
         }
     }
 

@@ -10,8 +10,8 @@ import java.util.*
 @Entity
 data class User(@PrimaryKey var mobileNo: Long,
            var name: String,
-           var emailId: String,
-           var specificRequirement: String,
+           var emailId: String = "none",
+           var specificRequirement: String = "none",
            var groupSize: Int = 1,
            var status: String = "Null",
            var time: String = SimpleDateFormat("dd/M/yyyy hh:mm:ss").format(Date()),

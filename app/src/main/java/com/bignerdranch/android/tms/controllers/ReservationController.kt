@@ -1,5 +1,6 @@
 package com.bignerdranch.android.tms.controllers
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
@@ -64,12 +65,23 @@ class ReservationController : AppCompatActivity() {
         })
 
         addReservation.setOnClickListener({
-            assignUser()
-            reservationServices.addReservation(user,userDetailViewMode)
-            Toast.makeText(this,"Added",Toast.LENGTH_SHORT).show()
+            if (reservationMobileNo.text.toString().isEmpty()) {
+                reservationMobileNo.error = "Mobile No Required"
+            }
+            else if (reservationName.text.toString().isEmpty()) {
+                    reservationName.error = "Name is Required"
+            }
+            else if (reservationGroup.text.toString().isEmpty()) {
+                    reservationGroup.error = "Required"
+            }
+            else {
+                assignUser()
+                reservationServices.addReservation(user, userDetailViewMode)
+                Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, TableController::class.java)
+                startActivity(intent)
+            }
         })
-
-
     }
 
     private fun allocatingViews(){
@@ -86,8 +98,8 @@ class ReservationController : AppCompatActivity() {
         user = User(
             reservationMobileNo.text.toString().toLong(),
             reservationName.text.toString(),
-            reservationEmailId.text.toString(),
-            reservationSpecialRequirement.text.toString(),
+            reservationEmailId.text.toString().ifEmpty {""} ,
+            reservationSpecialRequirement.text.toString().ifEmpty {""},
             reservationGroup.text.toString().toInt(),
             getString(R.string.reservation_status_waiting)
         )

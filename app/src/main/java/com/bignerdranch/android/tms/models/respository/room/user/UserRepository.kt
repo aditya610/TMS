@@ -1,4 +1,4 @@
-package com.bignerdranch.android.tms.models.respository.repo
+package com.bignerdranch.android.tms.models.respository.room.user
 
 import android.content.Context
 import androidx.lifecycle.LiveData
@@ -21,6 +21,8 @@ class UserRepository private constructor(context: Context){
     fun getUserByMobileNo(mobileNo: Long): LiveData<User> = userDao.getUserByMobileNo(mobileNo)
 
     suspend fun addUser(user: User) = userDao.addUser(user)
+    
+    suspend fun updateUser(user: User) = userDao.updateUser(user)
 
     companion object {
 

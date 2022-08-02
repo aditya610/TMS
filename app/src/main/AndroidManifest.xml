@@ -11,8 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TMS">
         <activity
+            android:name=".controllers.TableController"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".controllers.ReservationController"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,8 +25,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
     </application>
 
 </manifest>

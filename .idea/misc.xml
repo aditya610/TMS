@@ -3,8 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_edit.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_edit_table.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor2.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor4.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor6.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_main.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_reservation_form.xml" value="0.4" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_table_controller.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_detail.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_list.xml" value="0.13125" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/list_item_table.xml" value="0.4" />
       </map>
     </option>
   </component>
@@ -13,5 +22,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>
