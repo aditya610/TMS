@@ -11,16 +11,22 @@
                 android:layout_height="wrap_content"
                 tools:context=".controllers.TableController">
 
-                <FrameLayout
+                <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/fragment_table_detail"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                        android:layout_height="wrap_content"
+                        android:name="androidx.navigation.fragment.NavHostFragment"
+                        app:navGraph="@navigation/nav_graph"
+                        app:defaultNavHost="true"
 
-                <FrameLayout
+                    />
+
+                <androidx.fragment.app.FragmentContainerView
                         android:id="@+id/fragment_table_list"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                    android:layout_below="@id/fragment_table_detail" />
+                    android:layout_below="@id/fragment_table_detail"
+                    />
 
         </RelativeLayout>
 

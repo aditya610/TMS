@@ -10,6 +10,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.bignerdranch.android.tms.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -78,7 +79,14 @@ class TableList : Fragment() {
 
     }
 
-//    companion object {
+
+
+    companion object {
+        fun create(): Fragment {
+            val fragment = TableList()
+            return fragment
+        }
+    }
 //        /**
 //         * Use this factory method to create a new instance of
 //         * this fragment using the provided parameters.
@@ -98,3 +106,13 @@ class TableList : Fragment() {
 //            }
 //    }
 }
+
+class TableAdapter(fragment: Fragment): FragmentStateAdapter(fragment) {
+    override fun getItemCount(): Int = 5
+
+    override fun createFragment(position: Int): Fragment {
+        return TableList.create()
+    }
+
+}
+
