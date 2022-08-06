@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    tools:context=".controllers.fragments.TableDetail">
+    tools:context=".controllers.fragments.TableDetailFragment">
 
     <!-- TODO: Update blank fragment layout -->
         <androidx.cardview.widget.CardView

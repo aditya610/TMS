@@ -4,4 +4,4 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/table_list_recycler_view"
-    tools:context=".controllers.fragments.TableList"/>
+    tools:context=".controllers.fragments.TableListFragment"/>

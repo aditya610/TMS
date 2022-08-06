@@ -5,16 +5,22 @@
       <map>
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_edit.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_edit_table.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/left_arrow.xml" value="0.1171875" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/right_arrow.xml" value="0.1171875" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor2.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor4.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor6.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_main.xml" value="0.2164855072463768" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_reservation_form.xml" value="0.4" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_table_controller.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_fragment_edit.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_table_edit.xml" value="0.19166666666666668" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_floor.xml" value="0.16378205128205128" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_floor_settings.xml" value="0.16378205128205128" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_detail.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_list.xml" value="0.13125" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_settings.xml" value="0.16378205128205128" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/list_item_table.xml" value="0.4" />
       </map>
     </option>
