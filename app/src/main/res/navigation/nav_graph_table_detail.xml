@@ -16,11 +16,18 @@
             android:id="@+id/action_nav_table_to_nav_dialog"
             app:destination="@id/nav_dialog" />
     </fragment>
-    <dialog
+
+    <navigation
         android:id="@+id/nav_dialog"
-        android:name="com.bignerdranch.android.tms.controllers.fragments.EditDialogFragment"
-        android:label="TableDialog"
-        tools:layout="@layout/dialog_fragment_edit"
-        />
+        app:startDestination="@id/nav_edit_dialog">
+
+        <dialog
+            android:id="@+id/nav_edit_dialog"
+            android:name="com.bignerdranch.android.tms.controllers.fragments.EditDialogFragment"
+            android:label="TableDialog"
+            tools:layout="@layout/dialog_fragment_edit"
+            />
+
+    </navigation>
 
 </navigation>

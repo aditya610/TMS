@@ -24,8 +24,8 @@ class TableDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         editTable = view.findViewById(R.id.edit_table)
-        editTable.setOnClickListener({
-                it.findNavController().navigate(R.id.action_nav_table_to_nav_dialog)
+        editTable?.setOnClickListener({
+                it.findNavController().navigate(R.id.nav_dialog)
             })
     }
 }

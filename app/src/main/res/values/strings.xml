@@ -7,4 +7,18 @@
     <string name="reservation_special_requirement">Specific Requirement</string>
     <string name="reservation_waiting_list">Waiting List</string>
     <string name="reservation_status_waiting">Waiting</string>
+
+    <string name="table_no">Table No</string>
+    <string name="capacity">Seating Capacity</string>
+    <string name="floor_no">Floor No</string>
+    <string name="seating_capacity">Seating Capacity</string>
+    <string name="row">"Row        "</string>
+    <string name="column">Column</string>
+    <string name="add">ADD</string>
+    <string name="delete">Delete</string>
+    <string name="done">Done</string>
+    <string name="total_table">Total Table</string>
+    <string name="table_left">Table Left</string>
+    <string name="fill_the_floor">Fill the floor with tables</string>
+
 </resources>

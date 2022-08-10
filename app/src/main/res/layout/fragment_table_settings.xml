@@ -1,13 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical"
+    android:padding="25dp">
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/table_no"
+        />
+
+    <EditText
+        android:id="@+id/table_no"
         android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:textSize="20dp"
-        android:text="Hello Dialog Table"
-        android:layout_gravity="center"
-        android:gravity="center"/>
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/floor_no"
+            android:layout_marginLeft="10dp"/>
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/seating_capacity"
+            android:layout_marginLeft="90dp"/>
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/floor_No"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingStart="15dp"
+            android:background="@drawable/spinner_background"
+            tools:listitem="@layout/spinner_item"/>
+
+
+
+        <Spinner
+            android:id="@+id/capacity"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingStart="15dp"
+            android:layout_marginLeft="64dp"
+            android:background="@drawable/spinner_background"
+            tools:listitem="@layout/spinner_item"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/row"
+            android:layout_marginLeft="10dp"/>
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/column"
+            android:layout_marginLeft="90dp"
+            />
+        />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/row"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingStart="15dp"
+            android:background="@drawable/spinner_background"
+            tools:listitem="@layout/spinner_item"
+            />
+
+
+        <Spinner
+            android:id="@+id/column"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingStart="15dp"
+            android:layout_marginLeft="64dp"
+            android:background="@drawable/spinner_background"
+            tools:listitem="@layout/spinner_item"
+            />
+
+    </LinearLayout>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"/>
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/done"/>
+
 </LinearLayout>
