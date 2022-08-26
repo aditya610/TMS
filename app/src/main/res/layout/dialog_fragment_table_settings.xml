@@ -48,7 +48,7 @@
         android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/floor_No"
+            android:id="@+id/table_floor_no"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -59,7 +59,7 @@
 
 
         <Spinner
-            android:id="@+id/capacity"
+            android:id="@+id/table_seating_capacity"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -101,7 +101,7 @@
         android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/row"
+            android:id="@+id/table_row"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -112,7 +112,7 @@
 
 
         <Spinner
-            android:id="@+id/column"
+            android:id="@+id/table_column"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -125,21 +125,25 @@
     </LinearLayout>
 
     <RadioGroup
+        android:id="@+id/tabe_radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_marginTop="10dp">
         <RadioButton
+            android:id="@+id/table_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add"/>
         <RadioButton
+            android:id="@+id/table_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/delete"/>
     </RadioGroup>
 
     <Button
+        android:id="@+id/btn_table_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

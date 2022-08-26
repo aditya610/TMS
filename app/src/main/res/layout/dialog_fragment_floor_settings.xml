@@ -14,7 +14,7 @@
         />
 
     <EditText
-        android:id="@+id/floor_no"
+        android:id="@+id/et_floor_no"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="number"
@@ -71,13 +71,33 @@
 
     </LinearLayout>
 
-    <CheckBox
+    <RadioGroup
+        android:id="@+id/floor_radio_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+        <RadioButton
+            android:id="@+id/floor_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add"/>
+        <RadioButton
+            android:id="@+id/floor_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/delete"/>
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/add_tables_to_floor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/fill_the_floor"/>
 
     <Button
+        android:id="@+id/btn_floor_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"

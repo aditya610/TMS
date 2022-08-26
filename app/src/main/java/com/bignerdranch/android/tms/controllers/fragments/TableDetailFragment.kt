@@ -9,7 +9,9 @@ import android.widget.ImageButton
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.tms.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TableDetailFragment : Fragment() {
 
     private lateinit var editTable: ImageButton
@@ -24,7 +26,7 @@ class TableDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         editTable = view.findViewById(R.id.edit_table)
-        editTable?.setOnClickListener({
+        editTable.setOnClickListener({
                 it.findNavController().navigate(R.id.nav_dialog)
             })
     }

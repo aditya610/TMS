@@ -13,6 +13,7 @@
         <activity
             android:name=".controllers.TableController"
             android:exported="true" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +23,7 @@
         <activity
             android:name=".controllers.ReservationController"
             android:exported="false">
+
         </activity>
     </application>
 

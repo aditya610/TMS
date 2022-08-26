@@ -1,6 +1,5 @@
 package com.bignerdranch.android.tms.controllers.fragments
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.os.Bundle
 import android.view.KeyEvent
@@ -14,10 +13,11 @@ import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.bignerdranch.android.tms.R
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class EditDialogFragment : DialogFragment() {
 
     private lateinit var viewPager2: ViewPager2
@@ -70,10 +70,10 @@ class EditDialogFragment : DialogFragment() {
 
         override fun createFragment(position: Int): Fragment {
             when (position) {
-                0 -> return TableSettingFragment()
-                1 -> return FloorSettingFragment()
+                0 -> return TableSettingDialogFragment()
+                1 -> return FloorSettingDialogFragment()
             }
-            return TableSettingFragment()
+            return TableSettingDialogFragment()
         }
     }
 

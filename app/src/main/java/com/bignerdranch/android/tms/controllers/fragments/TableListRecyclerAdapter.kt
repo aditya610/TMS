@@ -8,7 +8,7 @@ import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.tms.R
 
-class TableListAdapter(): RecyclerView.Adapter<TableHolder>(){
+class TableListRecyclerAdapter(): RecyclerView.Adapter<TableHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TableHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_table, parent, false)

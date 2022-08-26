@@ -1,24 +1,25 @@
 package com.bignerdranch.android.tms.controllers
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.lifecycle.LifecycleOwner
+import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import com.bignerdranch.android.tms.R
 import com.bignerdranch.android.tms.models.entities.User
-import com.bignerdranch.android.tms.services.ReservationServices
 import com.bignerdranch.android.tms.services.viewModel.UserDetailViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val TAG = "ReservationController"
 
+@AndroidEntryPoint
 class ReservationController : AppCompatActivity() {
 
     private lateinit var reservationName: EditText
@@ -26,23 +27,15 @@ class ReservationController : AppCompatActivity() {
     private lateinit var reservationGroup: EditText
     private lateinit var reservationEmailId: EditText
     private lateinit var reservationSpecialRequirement: EditText
-    private lateinit var reservationServices: ReservationServices
     private lateinit var addReservation : Button
     private lateinit var user: User
-    private val userDetailViewMode: UserDetailViewModel by lazy {
-        ViewModelProvider(this).get(UserDetailViewModel::class.java)
-    }
+    private val userDetailViewMode: UserDetailViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_reservation_form)
-
         allocatingViews()
-
-        getUser()
-
-        reservationServices = ReservationServices()
 
         reservationMobileNo.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -51,10 +44,7 @@ class ReservationController : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if (!s.isNullOrBlank()) {
-                    reservationServices.searchReservationByMobileNo(
-                        s.toString().toLong(),
-                        userDetailViewMode,
-                    )
+                    //userDetailViewMode.setUserMobileNo(s.toString().toLong())
                 }
             }
 
@@ -66,20 +56,22 @@ class ReservationController : AppCompatActivity() {
 
         addReservation.setOnClickListener({
             if (reservationMobileNo.text.toString().isEmpty()) {
-                reservationMobileNo.error = "Mobile No Required"
+                reservationMobileNo.error = getString(R.string.required)
             }
             else if (reservationName.text.toString().isEmpty()) {
-                    reservationName.error = "Name is Required"
+                    reservationName.error = getString(R.string.required)
             }
             else if (reservationGroup.text.toString().isEmpty()) {
-                    reservationGroup.error = "Required"
+                    reservationGroup.error = getString(R.string.required)
             }
             else {
                 assignUser()
-                reservationServices.addReservation(user, userDetailViewMode)
-                Toast.makeText(this, "Added", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, TableController::class.java)
-                startActivity(intent)
+                userDetailViewMode.addUser(user)
+                Toast.makeText(this, "Reservation Added", Toast.LENGTH_SHORT).show()
+                Handler().postDelayed(Runnable {
+                    val intent = Intent(this, TableController::class.java)
+                    startActivity(intent)
+                }, 1)
             }
         })
     }
@@ -105,16 +97,4 @@ class ReservationController : AppCompatActivity() {
         )
     }
 
-    private fun getUser()
-    {
-        userDetailViewMode.userLiveData.observe(
-            this,
-            Observer { user ->
-                user?.let {
-                    Log.d(TAG,user.name.toString())
-                }
-
-            }
-        )
-    }
 }

@@ -4,10 +4,10 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class Floor(@PrimaryKey val floorNo: Int,
-                 var length: Int,
-                 var width: Int,
-                 var tableNoList: Int//MutableList<Int>
+data class Floor(@PrimaryKey
+                 val floorNo: Int,
+                 var floorRows: Int,
+                 var floorColumns: Int
 ){
 
 }

@@ -15,10 +15,16 @@
     <string name="row">"Row        "</string>
     <string name="column">Column</string>
     <string name="add">ADD</string>
-    <string name="delete">Delete</string>
+    <string name="delete">DELETE</string>
     <string name="done">Done</string>
     <string name="total_table">Total Table</string>
     <string name="table_left">Table Left</string>
     <string name="fill_the_floor">Fill the floor with tables</string>
+
+    //Errors
+    <string name="required">Required</string>
+
+    //Toast message
+    <string name="toast_message_for_radio_button">Select one of the following options: Add or Delete</string>
 
 </resources>
