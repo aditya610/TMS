@@ -7,8 +7,9 @@ import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.tms.R
+import com.bignerdranch.android.tms.models.entities.Table
 
-class TableListRecyclerAdapter(): RecyclerView.Adapter<TableHolder>(){
+class TableListRecyclerAdapter(val map:Map<Int,Table>): RecyclerView.Adapter<TableHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TableHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_table, parent, false)
@@ -16,7 +17,17 @@ class TableListRecyclerAdapter(): RecyclerView.Adapter<TableHolder>(){
     }
 
     override fun onBindViewHolder(holder: TableHolder, position: Int) {
-        holder.bind(position)
+        //holder.bind(position)
+        if (map.get(position) != null)
+        {
+            if (map.get(position)!!.tableNo != 0)
+            {
+                holder.bind(position)
+            }
+            else{
+                holder.bind2(position)
+            }
+        }
     }
 
     override fun getItemCount(): Int = 9
@@ -34,6 +45,12 @@ class TableHolder(view: View): RecyclerView.ViewHolder(view){
         else {
             table.setImageResource(R.drawable.tablefor4)
         }
+    }
+
+    fun bind2(position: Int) {
+            table.setImageResource(R.drawable.tablefor2)
+            table.visibility = View.INVISIBLE
+
     }
 
 }

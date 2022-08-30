@@ -1,18 +1,22 @@
 package com.bignerdranch.android.tms.controllers.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.viewpager.widget.PagerAdapter.POSITION_NONE
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.bignerdranch.android.tms.R
+import com.bignerdranch.android.tms.common.data.SeedData
+//import com.bignerdranch.android.tms.models.entities.FLoorWithTables
 import com.bignerdranch.android.tms.services.viewModel.FloorViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +32,6 @@ class TableListViewPagerFragment : Fragment() , View.OnClickListener
 
     private var list:List<Int> = listOf(0,1)
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -43,6 +46,7 @@ class TableListViewPagerFragment : Fragment() , View.OnClickListener
     }
 
     override fun onResume() {
+
         viewModel.floorCount.observe(
             viewLifecycleOwner,
             Observer {
@@ -51,6 +55,7 @@ class TableListViewPagerFragment : Fragment() , View.OnClickListener
                 adapter.notifyDataSetChanged()
             }
         )
+
         viewModel.floorNoList.observe(
             viewLifecycleOwner,
             Observer {
@@ -61,6 +66,7 @@ class TableListViewPagerFragment : Fragment() , View.OnClickListener
                 setFloorNo()
             }
         )
+
         super.onResume()
     }
 
@@ -102,6 +108,7 @@ class TableListViewPagerFragment : Fragment() , View.OnClickListener
     fun setFloorNo()
     {
         floorNo.text = list.elementAt(viewPagerTable.currentItem).toString()
+        viewModel.setCurrenFloorNo(list.elementAt(viewPagerTable.currentItem))
     }
 
 }

@@ -8,6 +8,7 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bignerdranch.android.tms.R
+import com.bignerdranch.android.tms.models.entities.Table
 import com.bignerdranch.android.tms.services.viewModel.TableViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

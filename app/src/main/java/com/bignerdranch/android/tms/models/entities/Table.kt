@@ -16,11 +16,11 @@ data class Table(@PrimaryKey val tableNo: Int,
                   var tableStatus: String
 )
 
-data class FLoorWithTables(
-    @Embedded val floor: Floor,
-    @Relation(
-        parentColumn = "floorNo",
-        entityColumn = "tableFloorNo"
-    )
-    val tables: List<Table>
-)
+//data class FLoorWithTables(
+//    @Embedded val floor: Floor,
+//    @Relation(
+//        parentColumn = "floorNo",
+//        entityColumn = "tableFloorNo"
+//    )
+//    val tables: List<Table>
+//)

@@ -21,6 +21,8 @@ class TableFloorRepository @Inject constructor(
 
     suspend fun updateFloor(floor: Floor) = tableFloorDao.updateFloor(floor)
 
+     fun getTablesByFloorNo(floorNo: Int) = tableFloorDao.getTablesByFloorNo(floorNo)
+
     suspend fun getFloorByFloorNo(floorNo: Int) = tableFloorDao.getFloorByFLoorNo(floorNo)
 
     fun getFloorCount() =  tableFloorDao.getFLoorCount()
@@ -31,5 +33,6 @@ class TableFloorRepository @Inject constructor(
 
     fun getColumnFromFloor(floorNo: Int) = tableFloorDao.getColumnFromFloor(floorNo)
 
+    //fun getFLoorWithTables() = tableFloorDao.getFLoorWithTables()
 
 }

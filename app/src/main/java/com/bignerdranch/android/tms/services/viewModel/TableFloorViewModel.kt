@@ -9,6 +9,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collect
 import androidx.lifecycle.asLiveData
+import kotlinx.coroutines.flow.flatMapLatest
+//import com.bignerdranch.android.tms.models.entities.FLoorWithTables
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -81,6 +83,21 @@ class FloorViewModel @Inject constructor(
     var pageCount:Int = 1
     var noOfRowsFloor:Int = 1
     var noOfColumsFloor:Int = 1
+
+    var currentFloorNo = MutableLiveData<Int>()
+
+    fun setCurrenFloorNo(floorNo: Int)
+    {
+        currentFloorNo.value = floorNo
+    }
+
+    val tableList:LiveData<List<Table>> =
+            Transformations.switchMap(currentFloorNo) {
+                tableFloorRepository.getTablesByFloorNo(it).asLiveData()
+            }
+
+//    val tableList:LiveData<List<Table>> = currentFloorNo.flatMapLatest {
+//        tableFloorRepository.getTablesByFloorNo(it)}.asLiveData()
 
     var  floorNoList: LiveData<List<Int>> =
         tableFloorRepository.getListOfFLoorNo().asLiveData()
