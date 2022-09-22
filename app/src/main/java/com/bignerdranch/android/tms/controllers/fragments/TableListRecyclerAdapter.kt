@@ -8,8 +8,9 @@ import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.tms.R
 import com.bignerdranch.android.tms.models.entities.Table
+import com.bignerdranch.android.tms.models.entities.TableSummary
 
-class TableListRecyclerAdapter(val map:Map<Int,Table>): RecyclerView.Adapter<TableHolder>(){
+class TableListRecyclerAdapter(val map:Map<Int,TableSummary>): RecyclerView.Adapter<TableHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TableHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_table, parent, false)
@@ -20,13 +21,13 @@ class TableListRecyclerAdapter(val map:Map<Int,Table>): RecyclerView.Adapter<Tab
         //holder.bind(position)
         if (map.get(position) != null)
         {
-            if (map.get(position)!!.tableNo != 0)
-            {
-                holder.bind(position)
-            }
-            else{
-                holder.bind2(position)
-            }
+//            if (map.get(position)!!.tableNo != 0)
+//            {
+//                holder.bind(position)
+//            }
+//            else{
+//                holder.bind2(position)
+//            }
         }
     }
 

@@ -1,5 +1,6 @@
 package com.bignerdranch.android.tms.controllers.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +11,12 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.findNavController
 import androidx.viewpager.widget.PagerAdapter.POSITION_NONE
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
@@ -19,15 +25,17 @@ import com.bignerdranch.android.tms.common.data.SeedData
 //import com.bignerdranch.android.tms.models.entities.FLoorWithTables
 import com.bignerdranch.android.tms.services.viewModel.FloorViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TableListViewPagerFragment : Fragment() , View.OnClickListener
 {
+    private val TAG = "TableListTag"
     private lateinit var viewPagerTable: ViewPager2
     private lateinit var leftButton: ImageButton
     private lateinit var rightButton: ImageButton
     private lateinit var floorNo: TextView
-    private val viewModel: FloorViewModel by viewModels()
+    private val viewModel: FloorViewModel by hiltNavGraphViewModels(R.id.floorFragment)
     private lateinit var adapter: TableListViewPagerAdapter
 
     private var list:List<Int> = listOf(0,1)
@@ -41,54 +49,63 @@ class TableListViewPagerFragment : Fragment() , View.OnClickListener
         return inflater.inflate(R.layout.fragment_table_list, container, false)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onPause() {
+        Log.d("pausecheck","onpausetlrf1")
+        super.onPause()
+        Log.d("pausecheck","onpausetlrfb1")
+
     }
 
-    override fun onResume() {
-
-        viewModel.floorCount.observe(
-            viewLifecycleOwner,
-            Observer {
-                viewModel.pageCount = it
-                adapter.updateCount(viewModel.pageCount)
-                adapter.notifyDataSetChanged()
-            }
-        )
-
-        viewModel.floorNoList.observe(
-            viewLifecycleOwner,
-            Observer {
-                if(it.size != 0)
-                {
-                    list = it
-                }
-                setFloorNo()
-            }
-        )
-
-        super.onResume()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        Log.d(TAG,"on ViewCreate")
         allocateViews(view)
-        adapter = TableListViewPagerAdapter(this,viewModel.pageCount)
+        adapter = TableListViewPagerAdapter(this,1)
         viewPagerTable.adapter = adapter
-        viewPagerTable.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                setFloorNo()
-            }
+        val button = view.findViewById<ImageButton>(R.id.edit_table_floor)
+        button.setOnClickListener({
+            it.findNavController().navigate(R.id.action_floorFragment_to_nav_dialog)
         })
-        setFloorNo()
-        onButtonClick()
-    }
+
+//        viewPagerTable.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+//            override fun onPageSelected(position: Int) {
+//                super.onPageSelected(position)
+//                setFloorNo()
+//            }
+//        })
+        //setFloorNo()
+        //onButtonClick()
+
+
+    //    viewLifecycleOwner.lifecycleScope.launch{
+      //      viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+        //        launch {
+//                    viewModel.floorNoList.collect{
+//                        if(it.size != 0)
+//                        {
+//                            list = it
+//                        }
+//                        setFloorNo()
+//                    }
+                }
+
+//                launch {
+//                    viewModel.floorCount.collect{
+//                        viewModel.pageCount = it
+//                        adapter.updateCount(viewModel.pageCount)
+//                        adapter.notifyDataSetChanged()
+//
+//                    }
+//                }
+      //      }
+    //    }
+  //  }
 
     private fun onButtonClick()
     {
-        rightButton.setOnClickListener(this)
-        leftButton.setOnClickListener(this)
+       // rightButton.setOnClickListener(this)
+        //leftButton.setOnClickListener(this)
     }
 
     private fun allocateViews(view:View){
@@ -99,16 +116,16 @@ class TableListViewPagerFragment : Fragment() , View.OnClickListener
     }
 
     override fun onClick(v: View?) {
-        when(v){
-            leftButton -> if(viewPagerTable.currentItem > 0) viewPagerTable.currentItem -= 1
-            rightButton -> if(viewPagerTable.currentItem < viewModel.pageCount) viewPagerTable.currentItem += 1
-        }
+//        when(v){
+//            leftButton -> if(viewPagerTable.currentItem > 0) viewPagerTable.currentItem -= 1
+//            rightButton -> if(viewPagerTable.currentItem < viewModel.pageCount) viewPagerTable.currentItem += 1
+//        }
     }
 
     fun setFloorNo()
     {
         floorNo.text = list.elementAt(viewPagerTable.currentItem).toString()
-        viewModel.setCurrenFloorNo(list.elementAt(viewPagerTable.currentItem))
+        //viewModel.setCurrenFloorNo(list.elementAt(viewPagerTable.currentItem))
     }
 
 }

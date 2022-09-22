@@ -18,21 +18,21 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class EditDialogFragment : DialogFragment() {
+class EditDialogFragment : DialogFragment(R.layout.dialog_fragment_table_settings) {
 
     private lateinit var viewPager2: ViewPager2
     private lateinit var tabLayout: TabLayout
     private var tabTitles = arrayListOf("Table", "Floor")
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        val view = inflater.inflate(R.layout.dialog_fragment_edit, container, false)
-        return view
-    }
+//
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+////        super.onCreateView(inflater, container, savedInstanceState)
+////        val view = inflater.inflate(R.layout.dialog_fragment_edit, container, false)
+////        return view
+//    }
 
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -49,17 +49,17 @@ class EditDialogFragment : DialogFragment() {
         }
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        viewPager2 = view.findViewById(R.id.viewPager2)
-        tabLayout = view.findViewById(R.id.tabLayout)
-
-        viewPager2.adapter = FloorDialogAdapter(this, 2)
-
-        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
-            tab.text = tabTitles[position]
-        }.attach()
-    }
+//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+//        super.onViewCreated(view, savedInstanceState)
+//        viewPager2 = view.findViewById(R.id.viewPager2)
+//        tabLayout = view.findViewById(R.id.tabLayout)
+//
+//        viewPager2.adapter = FloorDialogAdapter(this, 2)
+//
+//        TabLayoutMediator(tabLayout, viewPager2) { tab, position ->
+//            tab.text = tabTitles[position]
+//        }.attach()
+//    }
 
     class FloorDialogAdapter(fragment: DialogFragment, var position: Int) :
         FragmentStateAdapter(fragment) {

@@ -17,17 +17,23 @@
             app:destination="@id/nav_dialog" />
     </fragment>
 
-    <navigation
-        android:id="@+id/nav_dialog"
-        app:startDestination="@id/nav_edit_dialog">
+<!--    <fragment-->
+<!--        android:id="@+id/nav_dialog"-->
+<!--        android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"-->
+<!--        android:label="TableDialog"-->
+<!--        tools:layout="@layout/dialog_fragment_table_settings"-->
+<!--        />-->
+<!--    <navigation-->
+<!--        android:id="@+id/nav_dialog"-->
+<!--        app:startDestination="@id/nav_edit_dialog">-->
 
-        <dialog
-            android:id="@+id/nav_edit_dialog"
-            android:name="com.bignerdranch.android.tms.controllers.fragments.EditDialogFragment"
-            android:label="TableDialog"
-            tools:layout="@layout/dialog_fragment_edit"
-            />
+<!--        <dialog-->
+<!--            android:id="@+id/nav_edit_dialog"-->
+<!--            android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"-->
+<!--            android:label="TableDialog"-->
+<!--            tools:layout="@layout/dialog_fragment_table_settings"-->
+<!--            />-->
 
-    </navigation>
+<!--    </navigation>-->
 
 </navigation>

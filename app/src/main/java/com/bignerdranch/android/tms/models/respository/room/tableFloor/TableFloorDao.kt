@@ -5,14 +5,32 @@ import androidx.room.*
 //import com.bignerdranch.android.tms.models.entities.FLoorWithTables
 import com.bignerdranch.android.tms.models.entities.Floor
 import com.bignerdranch.android.tms.models.entities.Table
+import com.bignerdranch.android.tms.models.entities.TableSummary
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 
 @Dao
 interface TableFloorDao {
 
-    @Insert
-    suspend fun insertTable(table: Table)
+   @Insert(onConflict = OnConflictStrategy.REPLACE)
+   suspend fun insert(table: Table)
+
+    @Transaction
+    suspend fun insertTable(table: Table) {
+        if(table.tableNo.toString().isEmpty())
+        {
+            throw IllegalArgumentException("Task must include non-empty title.")
+        }
+        val data = Table(
+            table.tableNo,
+            table.tableFloorNo,
+            table.tableRow,
+            table.tableColumn,
+            table.tableCapacity,
+            table.tableStatus
+        )
+        insert(data)
+    }
 
     @Update
     suspend fun updateTable(table: Table)
@@ -20,8 +38,9 @@ interface TableFloorDao {
     @Query("Select * from `Table` where tableNo = (:tableNo)")
     suspend fun getTableByTableNo(tableNo : Int): Table
 
-    @Query("Select * from `Table` where tableFloorNo = (:floorNo)")
-     fun getTablesByFloorNo(floorNo: Int): Flow<List<Table>>
+    @Transaction
+    @Query("Select * from `TableSummary` where tableFloorNo = (:floorNo)")
+       fun getTableSummaryByTableFloorNo(floorNo: Int): Flow<List<TableSummary>>
 
     @Insert
     suspend fun insertFloor(floor: Floor)
@@ -33,16 +52,16 @@ interface TableFloorDao {
     suspend fun getFloorByFLoorNo(floorNo : Int): Floor
 
     @Query("Select Count(*) from FLoor")
-    fun getFLoorCount(): Flow<Int>
+     fun getFLoorCount(): Flow<Int>
 
     @Query("Select floorNo from Floor")
-     fun getListOfFLoorNo(): Flow<List<Int>>
+      fun getListOfFLoorNo(): Flow<List<Int>>
 
      @Query("Select floorRows from Floor where floorNo = :floorNo")
      fun getRowFromFloor(floorNo: Int): Flow<Int>
 
      @Query("Select floorColumns from Floor where floorNo = :floorNo")
-     fun getColumnFromFloor(floorNo: Int): Flow<Int>
+     suspend fun getColumnFromFloor(floorNo: Int): Int
 //
 //    @Transaction
 //    @Query("SELECT * FROM Floor ")

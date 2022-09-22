@@ -1,11 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_table_list"
     app:startDestination="@id/floorFragment">
 
     <fragment
         android:id="@+id/floorFragment"
         android:name="com.bignerdranch.android.tms.controllers.fragments.TableListViewPagerFragment"
-        android:label="FloorFragment" />
+        android:label="FloorFragment"
+        tools:layout="@layout/activity_table_controller">
+        <action
+            android:id="@+id/action_floorFragment_to_nav_dialog"
+            app:destination="@id/nav_dialog" />
+    </fragment>
+<!--    <fragment-->
+<!--        android:id="@+id/nav_dialog"-->
+<!--            android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"-->
+<!--            android:label="TableDialog"-->
+<!--            tools:layout="@layout/dialog_fragment_table_settings"-->
+<!--            />-->
+    <navigation
+        android:id="@+id/nav_dialog"
+        app:startDestination="@id/nav_edit_dialog">
+
+        <dialog
+            android:id="@+id/nav_edit_dialog"
+            android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"
+            android:label="TableDialog"
+            tools:layout="@layout/dialog_fragment_table_settings"
+            />
+
+    </navigation>
+
 </navigation>

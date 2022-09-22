@@ -1,19 +1,30 @@
 package com.bignerdranch.android.tms.controllers.fragments
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
+import androidx.core.view.WindowCompat
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.tms.R
 import com.bignerdranch.android.tms.models.entities.Table
+import com.bignerdranch.android.tms.services.viewModel.FloorViewModel
 import com.bignerdranch.android.tms.services.viewModel.TableViewModel
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TableSettingDialogFragment : Fragment() , AdapterView.OnItemSelectedListener
+class TableSettingDialogFragment : DialogFragment(R.layout.dialog_fragment_table_settings) , AdapterView.OnItemSelectedListener
 {
     private lateinit var tableNo: EditText
     private lateinit var floorNo: Spinner
@@ -25,7 +36,8 @@ class TableSettingDialogFragment : Fragment() , AdapterView.OnItemSelectedListen
     private lateinit var deleteRadioButton: RadioButton
     private lateinit var tableRadioGroup: RadioGroup
 
-    private val viewModel: TableViewModel by viewModels()
+    private val tableViewModel: TableViewModel by hiltNavGraphViewModels(R.id.nav_dialog)
+    //private val floorViewModel: FloorViewModel by viewModels()
 
     enum class Digits(val Number:Int) {
         one(1),
@@ -38,40 +50,101 @@ class TableSettingDialogFragment : Fragment() , AdapterView.OnItemSelectedListen
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        super.onCreateView(inflater, container, savedInstanceState)
-        val view = inflater.inflate(R.layout.dialog_fragment_table_settings, container, false)
-        return view
+
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
+
+
+    @SuppressLint("UnsafeRepeatOnLifecycleDetector")
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        tableViewModel.intialize()
+        lifecycleScope.launch{
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+                tableViewModel.tableFloorColumn.collect{
+
+                }
+            }
+        }
+//
+//        val themedContext = ContextThemeWrapper(
+//            requireContext(),
+//            R.style.ThemeOverlay_Trackr_TaskEdit
+//        )
+//        val dialog = MaterialAlertDialogBuilder(themedContext)
+//            .setCancelable(false)
+//            .setOnKeyListener { _, keyCode, event ->
+//                // This is the only way to intercept the back button press in DialogFragment.
+//                if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP) {
+//                    findNavController().popBackStack(R.id.nav_dialog, true)
+//                    true
+//                } else false
+//            }
+//            .create()
+//        lifecycleScope.launch{
+//            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+//                tableViewModel.tableFloorColumn.collect{
+//
+//                }
+//            }
+//        }
+//        return dialog.apply {
+//            setView(findViewById(R.layout.dialog_fragment_table_settings))
+//            WindowCompat.setDecorFitsSystemWindows(requireNotNull(window), false)
+//        }
+
+        this.isCancelable = false
+        val dialog =super.onCreateDialog(savedInstanceState)
+        dialog.setOnKeyListener { _, keyCode, event ->
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.action == KeyEvent.ACTION_UP) {
+                findNavController().popBackStack(R.id.nav_dialog, true)
+                true
+            } else false
+        }
+        return dialog.apply {
+            WindowCompat.setDecorFitsSystemWindows(requireNotNull(window), false)
+        }
+    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //viewModel.intialize()
+
         initialize(view)
-
-        viewModel.floorNoList.observe(
-            viewLifecycleOwner,
-            androidx.lifecycle.Observer {
-                setSpinnerApapter(floorNo,it)
-            }
-
-        )
-
-        viewModel.tableFloorRow.observe(
-            viewLifecycleOwner,
-            androidx.lifecycle.Observer {
-                viewModel.tableFLoorRowList = getListToN(it)
-                setSpinnerApapter(row,viewModel.tableFLoorRowList)
-            }
-        )
-
-        viewModel.tableFloorColumn.observe(
-            viewLifecycleOwner,
-            androidx.lifecycle.Observer {
-                viewModel.tableFloorColumnList = getListToN(it)
-                setSpinnerApapter(coloum,viewModel.tableFloorColumnList)
-            }
-        )
-        setSpinnerApapter(capacity,viewModel.tableCapacityList)
+//                viewLifecycleOwner.lifecycleScope.launch(){
+//            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+//                tableViewModel.tableFloorColumn.collect{
+//
+//                }
+//            }
+//        }
+//
+//        lifecycleScope.launch{
+//            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+//                launch {
+//                    floorViewModel.floorNoList.collect {
+//                        setSpinnerApapter(floorNo, it)
+//                    }
+//                }
+//                launch {
+//                    tableViewModel.tableFloorColumn.collect{
+//
+//                        tableViewModel.tableFloorColumnList = getListToN(it)
+//                        setSpinnerApapter(coloum,tableViewModel.tableFloorColumnList)
+//                    }
+//
+//                }
+//                launch {
+//                    tableViewModel.tableFloorRow.collect{
+//                        tableViewModel.tableFLoorRowList = getListToN(it)
+//                        setSpinnerApapter(row,tableViewModel.tableFLoorRowList)
+//                    }
+//
+//                }
+//            }
+//        }
+//        setSpinnerApapter(capacity,tableViewModel.tableCapacityList)
 
         button.setOnClickListener({
 
@@ -79,14 +152,18 @@ class TableSettingDialogFragment : Fragment() , AdapterView.OnItemSelectedListen
                 tableNo.error = getString(R.string.required)
             }
 
-            else if(tableRadioGroup.checkedRadioButtonId == -1){
-                Toast.makeText(context,getString(R.string.toast_message_for_radio_button), Toast.LENGTH_SHORT).show()
-            }
+//            else if(tableRadioGroup.checkedRadioButtonId == -1){
+//                Toast.makeText(context,getString(R.string.toast_message_for_radio_button), Toast.LENGTH_SHORT).show()
+//            }
 
             else{
-                viewModel.tableNo = tableNo.text.toString().toInt()
-                viewModel.save()
-                tableNo.text.clear()
+
+                //viewModel.tableNo = tableNo.text.toString().toInt()
+
+                tableViewModel.save()
+
+                //tableNo.text.clear()
+
             }
 
         })
@@ -130,11 +207,11 @@ class TableSettingDialogFragment : Fragment() , AdapterView.OnItemSelectedListen
 
         if (parent != null) {
             when(parent.id){
-                R.id.table_floor_no -> viewModel.floorNoList.value?.elementAt(position)
-                    ?.let { viewModel.setTableFloorNo(it) }
-                R.id.table_row -> viewModel.tableRow = viewModel.tableFLoorRowList.elementAt(position)
-                R.id.table_column -> viewModel.tableColumn = viewModel.tableFloorColumnList.elementAt(position)
-                R.id.table_seating_capacity -> viewModel.tableSeatingCapacity = viewModel.tableCapacityList.elementAt(position)
+//                R.id.table_floor_no -> floorViewModel.floorNoList.value?.elementAt(position)
+//                    ?.let { tableViewModel.setTableFloorNo(it) }
+//                R.id.table_row -> tableViewModel.tableRow = tableViewModel.tableFLoorRowList.elementAt(position)
+//                R.id.table_column -> tableViewModel.tableColumn = tableViewModel.tableFloorColumnList.elementAt(position)
+//                R.id.table_seating_capacity -> tableViewModel.tableSeatingCapacity = tableViewModel.tableCapacityList.elementAt(position)
             }
         }
     }
