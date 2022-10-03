@@ -7,30 +7,32 @@
 
     <fragment
         android:id="@+id/floorFragment"
-        android:name="com.bignerdranch.android.tms.controllers.fragments.TableListViewPagerFragment"
-        android:label="FloorFragment"
-        tools:layout="@layout/activity_table_controller">
+        android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tablelist.TableListViewPagerFragment"
+        android:label="FloorFragment">
         <action
             android:id="@+id/action_floorFragment_to_nav_dialog"
-            app:destination="@id/nav_dialog" />
+            app:destination="@id/nav_dialog_list" >
+
+            <argument
+                android:name="tableNo"
+                app:argType="integer"
+                android:defaultValue="1"/>
+        </action>
     </fragment>
-<!--    <fragment-->
-<!--        android:id="@+id/nav_dialog"-->
-<!--            android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"-->
-<!--            android:label="TableDialog"-->
-<!--            tools:layout="@layout/dialog_fragment_table_settings"-->
-<!--            />-->
     <navigation
-        android:id="@+id/nav_dialog"
-        app:startDestination="@id/nav_edit_dialog">
+        android:id="@+id/nav_dialog_list"
+        app:startDestination="@id/nav_status_dialog">
 
         <dialog
-            android:id="@+id/nav_edit_dialog"
-            android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"
+            android:id="@+id/nav_status_dialog"
+            android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tablestatusdialog.TableStatusDialog"
             android:label="TableDialog"
-            tools:layout="@layout/dialog_fragment_table_settings"
-            />
+            >
+            <argument
+                android:name="tableNo"
+                app:argType="integer"
+                android:defaultValue="0"/>
+        </dialog>
 
     </navigation>
-
 </navigation>

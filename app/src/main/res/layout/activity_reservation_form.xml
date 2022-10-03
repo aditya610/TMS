@@ -1,85 +1,176 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".controllers.ReservationController"
-    android:layout_margin="25dp">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reservation_mobile_no"
+    <data>
 
-        />
+        <variable
+            name="viewModel"
+            type="com.bignerdranch.android.tms.controllers.ui.reservation.ReservationViewModel" />
+    </data>
 
-    <EditText
-        android:id="@+id/reservation_mobile_no"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reservation_name"
-        />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/reservation_name"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="text"
-        />
+            <LinearLayout
+                android:id="@+id/llresvation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_marginLeft="30dp"
+                android:orientation="vertical"
+                tools:context=".controllers.ReservationController">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reservation_no_of_people"
-        />
+                <TextView
+                    android:id="@+id/dashboard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/cabinbold"
+                    android:text="@string/reservationform"
+                    android:textColor="#1F1F1F"
+                    android:textSize="35dp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1.5dp"
+                    android:layout_margin="10dp"
+                    android:background="#f0f0f0" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/cabinsemibold"
+                    android:text="@string/reservation_mobile_no"
+                    android:textColor="#C4C4C4"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/reservation_mobile_no"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="@={viewModel.mobileNo}"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/cabinsemibold"
+                    android:text="@string/reservation_name"
+                    android:textColor="#C4C4C4"
+                    android:textSize="16sp" />
+
+                <EditText
+                    android:id="@+id/reservation_name"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="@={viewModel.reservationName}"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/cabinsemibold"
+                    android:text="@string/reservation_no_of_people"
+                    android:textColor="#C4C4C4"
+                    android:textSize="16sp" />
 
 
-    <EditText
-        android:id="@+id/reservation_group"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        />
+                <EditText
+                    android:id="@+id/reservation_group"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:text="@={viewModel.noOfPeople}"
+                    android:textSize="22sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reservation_email_id"
-        />
-
-
-    <EditText
-        android:id="@+id/reservation_email_id"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reservation_special_requirement"
-        />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/cabinsemibold"
+                    android:text="@string/reservation_email_id"
+                    android:textColor="#C4C4C4"
+                    android:textSize="16sp" />
 
 
-    <EditText
-        android:id="@+id/reservation_requirements"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        />
+                <EditText
+                    android:id="@+id/reservation_email_id"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:text="@={viewModel.email}"
+                    android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/add_reservation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reservation_waiting_list"/>
-</LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/cabinsemibold"
+                    android:text="@string/reservation_special_requirement"
+                    android:textColor="#C4C4C4"
+                    android:textSize="16sp" />
+
+
+                <EditText
+                    android:id="@+id/reservation_requirements"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:text="@={viewModel.specialRequirement}"
+                    android:textSize="22sp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/wait_reservation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:text="@string/reservation_waiting_list"
+                        android:textColor="#C4C4C4"
+                        android:textSize="16dp" />
+
+                    <Button
+                        android:id="@+id/add_reservation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/rounded_button"
+                        android:text="@string/reservation_assign_table"
+                        android:textColor="#C4C4C4"
+                        android:textSize="16dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</layout>

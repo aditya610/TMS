@@ -2,9 +2,9 @@ package com.bignerdranch.android.tms.models.di
 
 import android.content.Context
 import androidx.room.Room
-import com.bignerdranch.android.tms.models.respository.room.TmsDatabase
-import com.bignerdranch.android.tms.models.respository.room.tableFloor.TableFloorDao
-import com.bignerdranch.android.tms.models.respository.room.user.UserDao
+import com.bignerdranch.android.tms.models.db.TmsDatabase
+import com.bignerdranch.android.tms.models.db.dao.TableFloorDao
+import com.bignerdranch.android.tms.models.db.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

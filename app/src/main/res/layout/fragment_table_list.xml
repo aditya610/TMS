@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -10,23 +9,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:paddingBottom="120dp"
-        android:layout_marginTop="12dp"/>
+        android:layout_marginTop="12dp"
+        android:paddingBottom="120dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
         android:gravity="center"
-        >
+        android:orientation="horizontal">
+
         <ImageButton
             android:id="@+id/left_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/left_arrow"
             android:background="@color/white"
-            />
+            android:src="@drawable/left_arrow" />
+
         <TextView
             android:id="@+id/floor_no"
             android:layout_width="wrap_content"
@@ -35,26 +34,22 @@
             android:paddingRight="20dp"
             android:textColor="@color/black"
             android:textSize="65sp"
-            tools:text="5"/>
+            tools:text="5" />
 
         <ImageButton
             android:id="@+id/right_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/right_arrow"
             android:background="@color/white"
-            />
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/edit_table_floor"
-            android:layout_marginTop="55dp"
-            android:layout_marginLeft="35dp"
-            android:background="@color/white"
-            android:src="@drawable/ic_edit"
-            android:layout_marginBottom="10dp"
-            />
+            android:src="@drawable/right_arrow" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnexit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="EXIT" />
 
 </RelativeLayout>

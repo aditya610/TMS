@@ -7,7 +7,7 @@
     >
     <fragment
         android:id="@+id/nav_table"
-        android:name="com.bignerdranch.android.tms.controllers.fragments.TableDetailFragment"
+        android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tabledetail.TableDetailFragment"
         android:label="TableDetail"
         tools:layout="@layout/activity_table_controller"
         >
@@ -17,23 +17,18 @@
             app:destination="@id/nav_dialog" />
     </fragment>
 
-<!--    <fragment-->
-<!--        android:id="@+id/nav_dialog"-->
-<!--        android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"-->
-<!--        android:label="TableDialog"-->
-<!--        tools:layout="@layout/dialog_fragment_table_settings"-->
-<!--        />-->
-<!--    <navigation-->
-<!--        android:id="@+id/nav_dialog"-->
-<!--        app:startDestination="@id/nav_edit_dialog">-->
+    <navigation
+        android:id="@+id/nav_dialog"
+        app:startDestination="@id/nav_edit_dialog">
 
-<!--        <dialog-->
-<!--            android:id="@+id/nav_edit_dialog"-->
-<!--            android:name="com.bignerdranch.android.tms.controllers.fragments.TableSettingDialogFragment"-->
-<!--            android:label="TableDialog"-->
-<!--            tools:layout="@layout/dialog_fragment_table_settings"-->
-<!--            />-->
+        <dialog
+            android:id="@+id/nav_edit_dialog"
+            android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.editdialog.EditDialogFragment"
+            android:label="TableDialog"
+            tools:layout="@layout/dialog_fragment_edit"
+            >
+        </dialog>
 
-<!--    </navigation>-->
+    </navigation>
 
 </navigation>

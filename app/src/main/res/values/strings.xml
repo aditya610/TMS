@@ -12,7 +12,7 @@
     <string name="capacity">Seating Capacity</string>
     <string name="floor_no">Floor No</string>
     <string name="seating_capacity">Seating Capacity</string>
-    <string name="row">"Row        "</string>
+    <string name="row">Row</string>
     <string name="column">Column</string>
     <string name="add">ADD</string>
     <string name="delete">DELETE</string>
@@ -20,11 +20,35 @@
     <string name="total_table">Total Table</string>
     <string name="table_left">Table Left</string>
     <string name="fill_the_floor">Fill the floor with tables</string>
+    <string name="table_status">Table Status</string>
+    <string name="reserve">RESERVE</string>
+
+
+    <string name="dashboard">Dashboard</string>
+    <string name="table_percentage_chart">Table Percentage Chart</string>
+    <string name="addReservation">Add Reservation</string>
+    <string name="total_capacity">Total Capacity</string>
+    <string name="capacity_occupied">Capacity Occupied</string>
+    <string name="capacity_left">Capacity Left</string>
+    <string name="total_reservations">Total Reservations</string>
+    <string name="reservations_completed">Reservations Completed</string>
+    <string name="reservations_left">Reservations Left</string>
+    <string name="top_reservation">Top Reservation</string>
+    <string name="group">Group</string>
+    <string name="status">Status</string>
+    <string name="action">Action</string>
+
 
     //Errors
     <string name="required">Required</string>
 
     //Toast message
     <string name="toast_message_for_radio_button">Select one of the following options: Add or Delete</string>
+
+    <string name="dataStoreKey">reservationMobileNo</string>
+    <string name="dataStoreName">tms</string>
+    <string name="reservationform">Reservation Form</string>
+    <string name="reservation_assign_table">Assign Table</string>
+
 
 </resources>

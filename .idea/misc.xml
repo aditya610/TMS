@@ -4,31 +4,44 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_arrow_drop_down.xml" value="0.11588541666666667" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_arrow_drop_down_status.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_component_4.xml" value="0.1225" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_component_5.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_delete.xml" value="0.1175" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_edit.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/ic_edit_table.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/left_arrow.xml" value="0.1171875" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/profilelogo.xml" value="0.1225" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/right_arrow.xml" value="0.1171875" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/rounded_button.xml" value="0.1175" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/spinner_background.xml" value="0.22330729166666666" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/spinner_background_status.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/status_spinner_background.xml" value="0.11588541666666667" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor2.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor4.xml" value="0.14739583333333334" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/drawable/tablefor6.xml" value="0.14739583333333334" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_dashboard.xml" value="0.19543973941368079" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_main.xml" value="0.2164855072463768" />
-        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_reservation_form.xml" value="0.4" />
-        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_table_controller.xml" value="0.136" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_reservation_form.xml" value="0.2" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/activity_table_controller.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_fragment_edit.xml" value="0.1" />
-        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_fragment_floor_settings.xml" value="0.1439102564102564" />
-        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_fragment_table_settings.xml" value="0.18237179487179486" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_fragment_floor_settings.xml" value="0.4" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_fragment_table_settings.xml" value="0.31210191082802546" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_fragment_table_status.xml" value="0.17647058823529413" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/dialog_table_edit.xml" value="0.19166666666666668" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_floor.xml" value="0.1" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_floor_settings.xml" value="0.4" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_reservation_list.xml" value="0.264" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_statistics.xml" value="0.2" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table.xml" value="0.19166666666666668" />
-        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_detail.xml" value="0.1" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_detail.xml" value="0.2" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_list.xml" value="0.13125" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/fragment_table_settings.xml" value="0.536" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/list_item_reservations.xml" value="0.264" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/list_item_table.xml" value="0.4" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/recycler_view__table_list.xml" value="0.18237179487179486" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/spinner_item.xml" value="0.16474358974358974" />
+        <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/spinner_item_table_status.xml" value="0.11607992388201713" />
         <entry key="..\:/Users/user/Desktop/git/TMS/app/src/main/res/layout/status_spinner_item.xml" value="0.4" />
       </map>
     </option>
