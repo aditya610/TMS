@@ -46,11 +46,15 @@ class TableListViewModel @Inject constructor(
         viewModelScope.launch() {
             currentFloorNo.mapLatest {
                 _tableList.value = tableFloorRepository.getTableListByTableFloorNo(it)
-            }.collect {
-
-            }
+            }.collect()
         }
     }
+
+    val refreshTableList = tableFloorRepository.getTableCount().stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5_000),
+        1
+    )
 }
 
 

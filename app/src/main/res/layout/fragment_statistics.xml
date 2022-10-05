@@ -19,7 +19,7 @@
             android:layout_height="wrap_content">
 
             <ImageButton
-                android:id="@+id/edit"
+                android:id="@+id/editStats"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_alignParentTop="true"

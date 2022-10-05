@@ -59,9 +59,11 @@ interface TableFloorDao {
 
     @Query("Select floorColumns from Floor where floorNo = :floorNo")
     suspend fun getColumnFromFloor(floorNo: Int): Int
-//
-//    @Transaction
-//    @Query("SELECT * FROM Floor ")
-//    fun getFLoorWithTables(): Flow<List<FLoorWithTables>>
+
+    @Query("Select Count(*) from `table`where tableStatus = 'Free'")
+    fun getTableCountByStatus():Flow<Int>
+
+    @Query("Select Count(*) from `table`")
+    fun getTableCount():Flow<Int>
 
 }

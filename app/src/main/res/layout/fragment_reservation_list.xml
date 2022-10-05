@@ -37,6 +37,7 @@
                     android:textSize="20sp" />
 
                 <Button
+                    android:id="@+id/list_reservation_add_reservation"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_alignParentTop="true"

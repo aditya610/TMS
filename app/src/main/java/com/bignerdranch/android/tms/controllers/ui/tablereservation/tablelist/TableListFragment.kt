@@ -16,6 +16,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.bignerdranch.android.tms.R
+import com.bignerdranch.android.tms.controllers.ui.dashboard.DashboardController
 import com.bignerdranch.android.tms.controllers.ui.reservation.ReservationController
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -93,7 +94,7 @@ class TableListViewPagerFragment : Fragment(), View.OnClickListener {
         when (v) {
             leftButton -> if (viewPagerTable.currentItem > 0) viewPagerTable.currentItem -= 1
             rightButton -> if (viewPagerTable.currentItem < viewModel.pageCount) viewPagerTable.currentItem += 1
-            exitButton -> startActivity(Intent(context, ReservationController::class.java))
+            exitButton -> startActivity(Intent(context, DashboardController::class.java))
         }
     }
 

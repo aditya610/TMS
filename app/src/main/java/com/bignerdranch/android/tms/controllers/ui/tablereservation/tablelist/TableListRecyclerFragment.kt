@@ -76,6 +76,11 @@ class TableListRecyclerFragment() : Fragment() {
                     }
                 }
             }
+            launch {
+                viewModel.refreshTableList.collect {
+                    viewModel.intialize()
+                }
+            }
         }
     }
 

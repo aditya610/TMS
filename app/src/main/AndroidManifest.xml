@@ -13,23 +13,20 @@
         <activity
             android:name=".controllers.ui.tablereservation.TableController"
             android:exported="false">
-
         </activity>
         <activity
             android:name=".controllers.ui.reservation.ReservationController"
-            android:exported="true">
+            android:exported="false">
 
+        </activity>
+        <activity
+            android:name=".controllers.ui.dashboard.DashboardController"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-        </activity>
-        <activity
-            android:name=".controllers.ui.dashboard.DashboardController"
-            android:exported="false">
-
         </activity>
     </application>
 

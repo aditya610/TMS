@@ -62,7 +62,7 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:text="@={viewModel.mobileNo}"
+                    android:text="@={viewModel.reservationMobileNo}"
                     android:textSize="22sp" />
 
                 <TextView

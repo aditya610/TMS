@@ -60,7 +60,8 @@ class TableStatusDialog : DialogFragment(), AdapterView.OnItemSelectedListener {
         binding.btnTableReserve.setOnClickListener({
             viewModel.save()
             viewModel.updateReservations()
-            findNavController().popBackStack(R.id.nav_dialog_list, true)
+            findNavController().navigate(R.id.action_status_to_save)
+            //findNavController().popBackStack(R.id.nav_dialog_list, true)
         })
 
         lifecycleScope.launch {

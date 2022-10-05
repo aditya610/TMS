@@ -16,6 +16,9 @@ object SeedData {
             return mutableMapOf<Int, String>(0 to "11")
     }
 
+    val reservationKey = "mobileNo"
+    val TableActivity = "Table"
+    val DashBoardActivity = "DashBoard"
     val positionList = listOf(1, 2, 3)
 
     enum class Digits(val Number: Int) {
@@ -42,5 +45,8 @@ object SeedData {
     val tableCapacityList = listOf<Int>(2, 4, 6)
 
     val tabTitles = arrayListOf("Table", "Floor")
+
+    val pieChartColorArray = arrayOf("#550CAE","#3044E8")
+
 
 }

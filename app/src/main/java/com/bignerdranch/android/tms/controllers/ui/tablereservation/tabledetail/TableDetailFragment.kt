@@ -7,28 +7,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.bignerdranch.android.tms.R
+import com.bignerdranch.android.tms.databinding.FragmentTableDetailBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class TableDetailFragment : Fragment() {
 
-    private lateinit var editTable: ImageButton
+    private val viewModel: TableDetailViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_table_detail, container, false)
-    }
+        viewModel.intialize()
+        val binding = DataBindingUtil.inflate<FragmentTableDetailBinding>(
+            inflater,
+            R.layout.fragment_table_detail,
+            container,
+            false
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        editTable = view.findViewById(R.id.edit_table)
-        editTable.setOnClickListener({
+        )
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
+        binding.editTable.setOnClickListener({
             it.findNavController().navigate(R.id.action_nav_table_to_nav_dialog)
         })
+        return binding.root
     }
-
 }

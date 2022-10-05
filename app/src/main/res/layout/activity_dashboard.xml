@@ -26,6 +26,7 @@
             android:textSize="35dp" />
 
         <Button
+            android:id="@+id/dashboard_add_reservation"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
@@ -45,7 +46,7 @@
             android:layout_marginTop="13dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="30dp"
-            android:background="@drawable/profilejpg" />
+            android:background="@drawable/profile" />
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragment_dashboard_statistics"

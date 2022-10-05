@@ -7,6 +7,7 @@ import android.widget.ImageButton
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.tms.R
+import com.bignerdranch.android.tms.common.data.SeedData
 import com.bignerdranch.android.tms.controllers.ui.tablereservation.tablelist.TableListViewPagerFragmentDirections
 import com.bignerdranch.android.tms.models.data.TableSummary
 
@@ -23,9 +24,9 @@ class TableListRecyclerAdapter(val map: Map<Int, TableSummary>) :
 
         if (map.get(position) != null) {
             if (map.get(position)!!.tableNo != 0) {
-                holder.bind(position)
+                holder.bind(position, map.get(position)!!)
             } else {
-                holder.bind2(position)
+                holder.bind2()
             }
         }
         holder.itemView.setOnClickListener({
@@ -46,15 +47,23 @@ class TableHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val table: ImageButton = view.findViewById(R.id.table)
 
-    fun bind(position: Int) {
-        if (position % 2 == 0) {
-            table.setImageResource(R.drawable.tablefor2)
+    fun bind(position: Int, tableSummary: TableSummary) {
+        if (tableSummary.tableCapacity == 2) {
+            if (tableSummary.tableStatus == SeedData.Status.RESERVE.status) {
+                table.setImageResource(R.drawable.tablefor2)
+            } else {
+                table.setImageResource(R.drawable.tablefor2free)
+            }
         } else {
-            table.setImageResource(R.drawable.tablefor4)
+            if (tableSummary.tableStatus == SeedData.Status.RESERVE.status) {
+                table.setImageResource(R.drawable.tablefor4)
+            } else {
+                table.setImageResource(R.drawable.tablefor4free)
+            }
         }
     }
 
-    fun bind2(position: Int) {
+    fun bind2() {
         table.setImageResource(R.drawable.tablefor2)
         table.visibility = View.INVISIBLE
 

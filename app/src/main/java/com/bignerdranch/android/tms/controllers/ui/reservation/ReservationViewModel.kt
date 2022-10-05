@@ -15,38 +15,42 @@ class ReservationViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    var mobileNo: String = ""
+    var reservationMobileNo = MutableStateFlow("")
 
-    var reservationName: String = ""
+    var reservationName = MutableStateFlow("")
 
-    var noOfPeople: String = ""
+    var noOfPeople = MutableStateFlow("")
 
-    var email: String = ""
+    var email = MutableStateFlow("")
 
-    var specialRequirement: String = ""
+    var specialRequirement = MutableStateFlow("")
 
-    private var _userList = MutableStateFlow<List<User>>(emptyList())
-    val userList = _userList
+    fun loadIntialData(mobileNo: Long) {
+        viewModelScope.launch {
+            if (mobileNo != 0L) {
+                val details = userRepository.getUserByMobileNo(mobileNo)
+                if (details != null) {
+                    reservationMobileNo.value = details.mobileNo.toString()
+                    reservationName.value = details.name
+                    noOfPeople.value = details.groupSize.toString()
+                }
+            }
+        }
+    }
 
     fun save() {
         viewModelScope.launch(Dispatchers.IO) {
             userRepository.addUser(
                 User(
-                    mobileNo.toLong(),
-                    reservationName,
-                    email,
-                    specialRequirement,
-                    noOfPeople.toInt(),
+                    reservationMobileNo.value.toLong(),
+                    reservationName.value,
+                    email.value,
+                    specialRequirement.value,
+                    noOfPeople.value.toInt(),
                     SeedData.Status.WAITING.status,
                     tableNo = 1
                 )
             )
-        }
-    }
-
-    fun intialize() {
-        viewModelScope.launch {
-            _userList.value = userRepository.getUserList()
         }
     }
 

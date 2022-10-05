@@ -53,6 +53,7 @@
             tools:text="status" />
 
         <ImageButton
+            android:id="@+id/edit_reservation"
             android:layout_width="0dp"
             android:layout_height="24dp"
             android:layout_weight="0.04"

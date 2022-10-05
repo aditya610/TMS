@@ -1,6 +1,7 @@
 package com.bignerdranch.android.tms.controllers.ui.tablereservation.editdialog.tablesetting
 
 import androidx.lifecycle.*
+import com.bignerdranch.android.tms.common.data.SeedData
 import com.bignerdranch.android.tms.models.data.Table
 import com.bignerdranch.android.tms.models.repository.TableFloorRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -65,7 +66,7 @@ class TableSettingViewModel @Inject constructor(
                     tableRow,
                     tableColumn,
                     tableSeatingCapacity,
-                    ""
+                    SeedData.Status.FREE.status
                 ))
             }
             catch (e: RuntimeException) {

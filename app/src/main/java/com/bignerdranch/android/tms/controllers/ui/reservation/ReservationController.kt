@@ -15,6 +15,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.tms.R
+import com.bignerdranch.android.tms.common.data.SeedData
+import com.bignerdranch.android.tms.controllers.ui.dashboard.DashboardController
 import com.bignerdranch.android.tms.controllers.ui.tablereservation.TableController
 import com.bignerdranch.android.tms.databinding.ActivityReservationFormBinding
 import com.bignerdranch.android.tms.controllers.ui.reservation.ReservationViewModel
@@ -28,43 +30,59 @@ class ReservationController : AppCompatActivity() {
 
     private val viewModel: ReservationViewModel by viewModels()
     private lateinit var dataStore: DataStore<Preferences>
+    private lateinit var binding: ActivityReservationFormBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding: ActivityReservationFormBinding =
+        this.overridePendingTransition(R.transition.slide_in_right,R.transition.slide_out_left)
+
+        val extra = intent.getStringExtra(SeedData.reservationKey)
+
+        if (extra != null){
+            viewModel.loadIntialData(extra.toLong())
+        }
+        binding =
             DataBindingUtil.setContentView(this, R.layout.activity_reservation_form)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
-        viewModel.intialize()
+        binding.waitReservation.setOnClickListener({
+            addReservations(SeedData.DashBoardActivity)
+        })
         binding.addReservation.setOnClickListener({
-            if (binding.reservationMobileNo.text.toString().isEmpty()) {
-                binding.reservationMobileNo.error = getString(R.string.required)
-            } else if (binding.reservationName.text.toString().isEmpty()) {
-                binding.reservationName.error = getString(R.string.required)
-            } else if (binding.reservationGroup.text.toString().isEmpty()) {
-                binding.reservationGroup.error = getString(R.string.required)
-            } else {
-                viewModel.save()
-                dataStore = createDataStore(name = getString(R.string.dataStoreName))
-                val dataStoreKey = preferencesKey<String>(getString(R.string.dataStoreKey))
-                lifecycleScope.launch {
-                    lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                        launch {
-                            dataStore.edit { settings ->
-                                settings[dataStoreKey] = binding.reservationMobileNo.text.toString()
-                            }
-                        }
-                    }
-                }
-                val intent = Intent(this, TableController::class.java)
-                startActivity(intent)
-            }
+            addReservations(SeedData.TableActivity)
         })
     }
 
-    override fun onResume() {
-        viewModel.intialize()
-        super.onResume()
+    fun addReservations(activity: String) {
+        if (binding.reservationMobileNo.text.toString().isEmpty() || binding.reservationMobileNo.length() != 10) {
+            binding.reservationMobileNo.error = getString(R.string.required)
+        } else if (binding.reservationName.text.toString().isEmpty()) {
+            binding.reservationName.error = getString(R.string.required)
+        } else if (binding.reservationGroup.text.toString().isEmpty()) {
+            binding.reservationGroup.error = getString(R.string.required)
+        } else {
+            viewModel.save()
+            dataStore = createDataStore(name = getString(R.string.dataStoreName))
+            val dataStoreKey = preferencesKey<String>(getString(R.string.dataStoreKey))
+            lifecycleScope.launch {
+                lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                    launch {
+                        dataStore.edit { settings ->
+                            settings[dataStoreKey] = binding.reservationMobileNo.text.toString()
+                        }
+                    }
+                }
+            }
+            if (activity == SeedData.TableActivity) {
+                val intent = Intent(this, TableController::class.java)
+                startActivity(intent)
+                this.overridePendingTransition(R.transition.slide_in_right,R.transition.slide_out_left)
+            } else {
+                val intent = Intent(this, DashboardController::class.java)
+                startActivity(intent)
+                this.overridePendingTransition(R.transition.slide_in_left,R.transition.slide_out_right)
+            }
+        }
     }
 
 }
