@@ -3,11 +3,31 @@
     package="com.bignerdranch.android.tms">
 
     <application
+        android:name=".common.application.TmsApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TMS" />
+        android:theme="@style/Theme.TMS">
+        <activity
+            android:name=".controllers.ui.tablereservation.TableController"
+            android:exported="false">
+        </activity>
+        <activity
+            android:name=".controllers.ui.reservation.ReservationController"
+            android:exported="false">
+
+        </activity>
+        <activity
+            android:name=".controllers.ui.dashboard.DashboardController"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
 
 </manifest>

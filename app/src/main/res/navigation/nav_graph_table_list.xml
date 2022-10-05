@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_table_list"
+    app:startDestination="@id/floorFragment">
+
+    <fragment
+        android:id="@+id/floorFragment"
+        android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tablelist.TableListViewPagerFragment"
+        android:label="FloorFragment">
+        <action
+            android:id="@+id/action_floorFragment_to_nav_dialog"
+            app:destination="@id/nav_dialog_list" >
+
+            <argument
+                android:name="tableNo"
+                app:argType="integer"
+                android:defaultValue="1"/>
+        </action>
+    </fragment>
+    <navigation
+        android:id="@+id/nav_dialog_list"
+        app:startDestination="@id/nav_status_dialog">
+
+        <dialog
+            android:id="@+id/nav_status_dialog"
+            android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tablestatusdialog.TableStatusDialog"
+            android:label="TableDialog"
+            >
+            <action
+                android:id="@+id/action_status_to_save"
+                app:destination="@id/nav_dialog_success"/>
+            <argument
+                android:name="tableNo"
+                app:argType="integer"
+                android:defaultValue="0"/>
+        </dialog>
+
+    </navigation>
+    <navigation
+        android:id="@+id/nav_dialog_success"
+        app:startDestination="@id/nav_success_dialog">
+
+        <dialog
+            android:id="@+id/nav_success_dialog"
+            android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tablestatusdialog.SuccessDialog"
+            android:label="TableSuccessDialog"
+            >
+        </dialog>
+
+    </navigation>
+</navigation>
