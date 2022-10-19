@@ -10,18 +10,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/cabinbold"
         android:text="@string/floor_no"
         android:textColor="#848484"
-        android:fontFamily="@font/cabinbold"
-        android:textSize="20sp"
-        />
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/et_floor_no"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:textSize="30sp"/>
+        android:textSize="30sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -33,23 +32,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
+            android:fontFamily="@font/cabinbold"
             android:text="@string/row"
-            android:textSize="20sp"
 
             android:textColor="#848484"
-            android:fontFamily="@font/cabinbold"
-            />
+            android:textSize="20sp" />
         />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="100dp"
-            android:text="@string/column"
-            android:textSize="20sp"
-            android:textColor="#848484"
             android:fontFamily="@font/cabinbold"
-            />
+            android:text="@string/column"
+            android:textColor="#848484"
+            android:textSize="20sp" />
         />
 
     </LinearLayout>
@@ -66,8 +63,8 @@
             android:layout_marginTop="16dp"
             android:background="@drawable/spinner_background"
             android:paddingStart="15dp"
-            android:textSize="20sp"
             android:textColor="#171515"
+            android:textSize="20sp"
             tools:listitem="@layout/spinner_item" />
 
 
@@ -77,10 +74,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="64dp"
             android:layout_marginTop="16dp"
-            android:textSize="20sp"
             android:background="@drawable/spinner_background"
             android:paddingStart="15dp"
             android:textColor="#171515"
+            android:textSize="20sp"
             tools:listitem="@layout/spinner_item" />
 
     </LinearLayout>
@@ -96,21 +93,19 @@
             android:id="@+id/floor_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/add"
-            android:textSize="20sp"
-            android:textColor="#848484"
             android:fontFamily="@font/cabinbold"
-            />
+            android:text="@string/add"
+            android:textColor="#848484"
+            android:textSize="20sp" />
 
         <RadioButton
             android:id="@+id/floor_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/delete"
-            android:textSize="20sp"
-            android:textColor="#848484"
             android:fontFamily="@font/cabinbold"
-            />
+            android:text="@string/delete"
+            android:textColor="#848484"
+            android:textSize="20sp" />
     </RadioGroup>
 
     <CheckBox
@@ -118,18 +113,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="@string/fill_the_floor"
-        android:textSize="20sp"
-        android:textColor="#848484"
         android:fontFamily="@font/cabinbold"
-        />
+        android:text="@string/fill_the_floor"
+        android:textColor="#848484"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btn_floor_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="@string/done"
-        android:background="@drawable/rounded_button"/>
+        android:background="@drawable/rounded_button"
+        android:text="@string/done" />
 
 </LinearLayout>

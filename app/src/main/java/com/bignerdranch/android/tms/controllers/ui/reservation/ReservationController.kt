@@ -34,11 +34,11 @@ class ReservationController : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        this.overridePendingTransition(R.transition.slide_in_right,R.transition.slide_out_left)
+        this.overridePendingTransition(R.transition.slide_in_right, R.transition.slide_out_left)
 
         val extra = intent.getStringExtra(SeedData.reservationKey)
 
-        if (extra != null){
+        if (extra != null) {
             viewModel.loadIntialData(extra.toLong())
         }
         binding =
@@ -54,7 +54,9 @@ class ReservationController : AppCompatActivity() {
     }
 
     fun addReservations(activity: String) {
-        if (binding.reservationMobileNo.text.toString().isEmpty() || binding.reservationMobileNo.length() != 10) {
+        if (binding.reservationMobileNo.text.toString()
+                .isEmpty() || binding.reservationMobileNo.length() != 10
+        ) {
             binding.reservationMobileNo.error = getString(R.string.required)
         } else if (binding.reservationName.text.toString().isEmpty()) {
             binding.reservationName.error = getString(R.string.required)
@@ -76,11 +78,17 @@ class ReservationController : AppCompatActivity() {
             if (activity == SeedData.TableActivity) {
                 val intent = Intent(this, TableController::class.java)
                 startActivity(intent)
-                this.overridePendingTransition(R.transition.slide_in_right,R.transition.slide_out_left)
+                this.overridePendingTransition(
+                    R.transition.slide_in_right,
+                    R.transition.slide_out_left
+                )
             } else {
                 val intent = Intent(this, DashboardController::class.java)
                 startActivity(intent)
-                this.overridePendingTransition(R.transition.slide_in_left,R.transition.slide_out_right)
+                this.overridePendingTransition(
+                    R.transition.slide_in_left,
+                    R.transition.slide_out_right
+                )
             }
         }
     }

@@ -3,14 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/nav_table"
-    >
+    app:startDestination="@id/nav_table">
     <fragment
         android:id="@+id/nav_table"
         android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tabledetail.TableDetailFragment"
         android:label="TableDetail"
-        tools:layout="@layout/activity_table_controller"
-        >
+        tools:layout="@layout/activity_table_controller">
 
         <action
             android:id="@+id/action_nav_table_to_nav_dialog"
@@ -25,9 +23,7 @@
             android:id="@+id/nav_edit_dialog"
             android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.editdialog.EditDialogFragment"
             android:label="TableDialog"
-            tools:layout="@layout/dialog_fragment_edit"
-            >
-        </dialog>
+            tools:layout="@layout/dialog_fragment_edit"></dialog>
 
     </navigation>
 

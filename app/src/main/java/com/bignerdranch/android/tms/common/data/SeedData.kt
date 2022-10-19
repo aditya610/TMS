@@ -1,5 +1,8 @@
 package com.bignerdranch.android.tms.common.data
 
+import com.bignerdranch.android.tms.models.data.Floor
+import com.bignerdranch.android.tms.models.data.Table
+
 object SeedData {
 
     fun gettablepostion(row: Int, column: Int): Map<Int, String> {
@@ -48,5 +51,7 @@ object SeedData {
 
     val pieChartColorArray = arrayOf("#550CAE","#3044E8")
 
+    val tableData = Table(1,1,1,1,2,"Free")
+    val floorData = Floor(1,3,3)
 
 }

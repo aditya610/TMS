@@ -12,13 +12,10 @@
         android:theme="@style/Theme.TMS">
         <activity
             android:name=".controllers.ui.tablereservation.TableController"
-            android:exported="false">
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".controllers.ui.reservation.ReservationController"
-            android:exported="false">
-
-        </activity>
+            android:exported="false"></activity>
         <activity
             android:name=".controllers.ui.dashboard.DashboardController"
             android:exported="true">

@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.bignerdranch.android.tms.common.data.SeedData
 import com.bignerdranch.android.tms.models.repository.TableFloorRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -12,15 +13,21 @@ import javax.inject.Inject
 @HiltViewModel
 class StatsViewModel @Inject constructor(
     private val tableFloorRepository: TableFloorRepository
-):ViewModel(){
+) : ViewModel() {
     private var _tableLeft = MutableStateFlow<Int>(1)
     val tableLeft = _tableLeft
 
     private var _tableOccupied = MutableStateFlow<Int>(1)
     val tableOccupied = _tableOccupied
 
-    fun initialize(){
-        viewModelScope.launch {
+    fun initialize() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val data = tableFloorRepository.getTables()
+            if (data == null || data == 0)
+            {
+                tableFloorRepository.insertFloor(SeedData.floorData)
+                tableFloorRepository.insertTable(SeedData.tableData)
+            }
             //_tableLeft.value = tableFloorRepository.getTableCountByStatus(SeedData.Status.FREE.status)
             //_tableOccupied.value = tableFloorRepository.getTableCountByStatus(SeedData.Status.RESERVE.status)
         }
