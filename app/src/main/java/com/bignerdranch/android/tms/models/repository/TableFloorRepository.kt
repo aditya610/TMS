@@ -28,9 +28,9 @@ class TableFloorRepository @Inject constructor(
 
     suspend fun getColumnFromFloor(floorNo: Int) = tableFloorDao.getColumnFromFloor(floorNo)
 
-    fun getTableCountByStatus(status: String) = tableFloorDao.getTableCountByStatus()
-
     fun getTableCount() = tableFloorDao.getTableCount()
+
+    suspend fun getTables() = tableFloorDao.getTables()
 
 
 }

@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ReservationListViewModel @Inject constructor(
     private val userRepository: UserRepository
-):ViewModel() {
+) : ViewModel() {
 
     private var _userList = MutableStateFlow<List<User>>(emptyList())
     val userList = _userList

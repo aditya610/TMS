@@ -37,8 +37,8 @@ class StatisticsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel.initialize()
         val view = inflater.inflate(R.layout.fragment_statistics, container, false)
-
         return view
     }
 
@@ -50,25 +50,22 @@ class StatisticsFragment : Fragment() {
         val pie = AnyChart.pie();
         val pieData = mutableListOf<ValueDataEntry>()
         pieData.add(ValueDataEntry(getString(R.string.table_left), 10))
-        pieData.add(ValueDataEntry(getString(R.string.table_Occupied),20))
+        pieData.add(ValueDataEntry(getString(R.string.table_Occupied), 20))
         pie.data(pieData.toList())
         pie.palette(pieColorChart)
         anyChartTable.setChart(pie)
 
         editStats.setOnClickListener({
-            val intent = Intent(context,TableController::class.java)
+            val intent = Intent(context, TableController::class.java)
             startActivity(intent)
         })
     }
-    private fun intializeViews(view: View){
+
+    private fun intializeViews(view: View) {
         anyChartTable = view.findViewById(R.id.any_chart_table)
         editStats = view.findViewById(R.id.editStats)
     }
 
-    override fun onResume() {
-        super.onResume()
-       // setChart()
-    }
 
 }
 //repeatWithViewLifecycle {

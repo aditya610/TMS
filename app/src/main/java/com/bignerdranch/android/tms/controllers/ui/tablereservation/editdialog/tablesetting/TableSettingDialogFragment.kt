@@ -14,8 +14,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class TableSettingDialogFragment : Fragment(R.layout.dialog_fragment_table_settings) , AdapterView.OnItemSelectedListener
-{
+class TableSettingDialogFragment : Fragment(R.layout.dialog_fragment_table_settings),
+    AdapterView.OnItemSelectedListener {
     private lateinit var tableNo: EditText
     private lateinit var floorNo: Spinner
     private lateinit var capacity: Spinner
@@ -31,36 +31,38 @@ class TableSettingDialogFragment : Fragment(R.layout.dialog_fragment_table_setti
         super.onViewCreated(view, savedInstanceState)
         tableViewModel.intialize()
         initialize(view)
-        lifecycleScope.launch{
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     tableViewModel.floorNoList.collect {
                         setSpinnerApapter(floorNo, it)
                     }
                 }
                 launch {
-                    tableViewModel.tableFloorColumn.collect{
+                    tableViewModel.tableFloorColumn.collect {
                         tableViewModel.tableFloorColumnList = SeedData.getListToN(it)
-                        setSpinnerApapter(coloum,tableViewModel.tableFloorColumnList)
+                        setSpinnerApapter(coloum, tableViewModel.tableFloorColumnList)
                     }
                 }
                 launch {
-                    tableViewModel.tableFloorRow.collect{
+                    tableViewModel.tableFloorRow.collect {
                         tableViewModel.tableFLoorRowList = SeedData.getListToN(it)
-                        setSpinnerApapter(row,tableViewModel.tableFLoorRowList)
+                        setSpinnerApapter(row, tableViewModel.tableFLoorRowList)
                     }
                 }
             }
         }
-        setSpinnerApapter(capacity,SeedData.tableCapacityList)
+        setSpinnerApapter(capacity, SeedData.tableCapacityList)
         button.setOnClickListener({
-            if (tableNo.text.isEmpty()){
+            if (tableNo.text.isEmpty()) {
                 tableNo.error = getString(R.string.required)
-            }
-            else if(tableRadioGroup.checkedRadioButtonId == -1){
-                Toast.makeText(context,getString(R.string.toast_message_for_radio_button), Toast.LENGTH_SHORT).show()
-            }
-            else{
+            } else if (tableRadioGroup.checkedRadioButtonId == -1) {
+                Toast.makeText(
+                    context,
+                    getString(R.string.toast_message_for_radio_button),
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
                 tableViewModel.tableNo = tableNo.text.toString().toInt()
                 tableViewModel.save()
                 tableNo.text.clear()
@@ -68,19 +70,19 @@ class TableSettingDialogFragment : Fragment(R.layout.dialog_fragment_table_setti
         })
     }
 
-    private fun initialize(view:View){
+    private fun initialize(view: View) {
         tableNo = view.findViewById(R.id.table_no)
         floorNo = view.findViewById(R.id.table_floor_no)
-        capacity =view.findViewById(R.id.table_seating_capacity)
+        capacity = view.findViewById(R.id.table_seating_capacity)
         row = view.findViewById(R.id.table_row)
         coloum = view.findViewById(R.id.table_column)
-        addRadioButton =view.findViewById(R.id.table_add)
+        addRadioButton = view.findViewById(R.id.table_add)
         deleteRadioButton = view.findViewById(R.id.table_delete)
         button = view.findViewById(R.id.btn_table_setting)
         tableRadioGroup = view.findViewById(R.id.tabe_radio_group)
     }
 
-    private fun setSpinnerApapter(spinner: Spinner, data: List<Int>){
+    private fun setSpinnerApapter(spinner: Spinner, data: List<Int>) {
 
         spinner.adapter = ArrayAdapter(
             requireContext(),
@@ -95,15 +97,19 @@ class TableSettingDialogFragment : Fragment(R.layout.dialog_fragment_table_setti
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
         if (parent != null) {
-            when(parent.id){
+            when (parent.id) {
                 R.id.table_floor_no -> tableViewModel.floorNoList.value?.elementAt(position)
                     ?.let { tableViewModel.setTableFloorNo(it) }
-                R.id.table_row -> tableViewModel.tableRow = tableViewModel.tableFLoorRowList.elementAt(position)
-                R.id.table_column -> tableViewModel.tableColumn = tableViewModel.tableFloorColumnList.elementAt(position)
-                R.id.table_seating_capacity -> tableViewModel.tableSeatingCapacity = SeedData.tableCapacityList.elementAt(position)
+                R.id.table_row -> tableViewModel.tableRow =
+                    tableViewModel.tableFLoorRowList.elementAt(position)
+                R.id.table_column -> tableViewModel.tableColumn =
+                    tableViewModel.tableFloorColumnList.elementAt(position)
+                R.id.table_seating_capacity -> tableViewModel.tableSeatingCapacity =
+                    SeedData.tableCapacityList.elementAt(position)
             }
         }
     }
+
     override fun onNothingSelected(parent: AdapterView<*>?) {
 
     }

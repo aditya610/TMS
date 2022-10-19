@@ -11,12 +11,12 @@
         android:label="FloorFragment">
         <action
             android:id="@+id/action_floorFragment_to_nav_dialog"
-            app:destination="@id/nav_dialog_list" >
+            app:destination="@id/nav_dialog_list">
 
             <argument
                 android:name="tableNo"
-                app:argType="integer"
-                android:defaultValue="1"/>
+                android:defaultValue="1"
+                app:argType="integer" />
         </action>
     </fragment>
     <navigation
@@ -26,15 +26,14 @@
         <dialog
             android:id="@+id/nav_status_dialog"
             android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tablestatusdialog.TableStatusDialog"
-            android:label="TableDialog"
-            >
+            android:label="TableDialog">
             <action
                 android:id="@+id/action_status_to_save"
-                app:destination="@id/nav_dialog_success"/>
+                app:destination="@id/nav_dialog_success" />
             <argument
                 android:name="tableNo"
-                app:argType="integer"
-                android:defaultValue="0"/>
+                android:defaultValue="0"
+                app:argType="integer" />
         </dialog>
 
     </navigation>
@@ -45,9 +44,7 @@
         <dialog
             android:id="@+id/nav_success_dialog"
             android:name="com.bignerdranch.android.tms.controllers.ui.tablereservation.tablestatusdialog.SuccessDialog"
-            android:label="TableSuccessDialog"
-            >
-        </dialog>
+            android:label="TableSuccessDialog"></dialog>
 
     </navigation>
 </navigation>

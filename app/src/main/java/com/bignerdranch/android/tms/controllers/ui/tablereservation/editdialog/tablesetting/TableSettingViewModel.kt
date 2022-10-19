@@ -17,37 +17,38 @@ class TableSettingViewModel @Inject constructor(
     private val tableFloorRepository: TableFloorRepository
 ) : ViewModel() {
 
-    var tableNo:Int = 0
+    var tableNo: Int = 0
 
-    var tableRow:Int = 1
+    var tableRow: Int = 1
 
-    var tableColumn:Int = 1
+    var tableColumn: Int = 1
 
-    var tableSeatingCapacity:Int = 2
+    var tableSeatingCapacity: Int = 2
 
-    lateinit var  tableFLoorRowList: List<Int>
+    lateinit var tableFLoorRowList: List<Int>
 
-    lateinit var  tableFloorColumnList: List<Int>
+    lateinit var tableFloorColumnList: List<Int>
 
-    val  floorNoList: StateFlow<List<Int>> = tableFloorRepository.getListOfFLoorNo().stateIn(viewModelScope,
-        SharingStarted.WhileSubscribed(5_000), emptyList())
+    val floorNoList: StateFlow<List<Int>> = tableFloorRepository.getListOfFLoorNo().stateIn(
+        viewModelScope,
+        SharingStarted.WhileSubscribed(5_000), listOf(1)
+    )
 
     private var _tableFloorNo = MutableStateFlow(1)
-    val tableFloorNo:StateFlow<Int> = _tableFloorNo
+    val tableFloorNo: StateFlow<Int> = _tableFloorNo
 
 
     private var _tableFloorRow = MutableStateFlow<Int>(1)
-    val tableFloorRow:StateFlow<Int> = _tableFloorRow
+    val tableFloorRow: StateFlow<Int> = _tableFloorRow
 
     private var _tableFloorColumn = MutableStateFlow<Int>(1)
-    val tableFloorColumn:StateFlow<Int> = _tableFloorColumn
+    val tableFloorColumn: StateFlow<Int> = _tableFloorColumn
 
-    fun setTableFloorNo(floorNo: Int)
-    {
+    fun setTableFloorNo(floorNo: Int) {
         _tableFloorNo.value = floorNo
     }
 
-     fun intialize(){
+    fun intialize() {
         viewModelScope.launch(Dispatchers.IO) {
             tableFloorNo.mapLatest {
                 _tableFloorColumn.value = tableFloorRepository.getColumnFromFloor(it)
@@ -60,16 +61,17 @@ class TableSettingViewModel @Inject constructor(
     fun save() {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                tableFloorRepository.insertTable(Table(
-                    tableNo,
-                    tableFloorNo.value,
-                    tableRow,
-                    tableColumn,
-                    tableSeatingCapacity,
-                    SeedData.Status.FREE.status
-                ))
-            }
-            catch (e: RuntimeException) {
+                tableFloorRepository.insertTable(
+                    Table(
+                        tableNo,
+                        tableFloorNo.value,
+                        tableRow,
+                        tableColumn,
+                        tableSeatingCapacity,
+                        SeedData.Status.FREE.status
+                    )
+                )
+            } catch (e: RuntimeException) {
                 e.printStackTrace()
             }
         }

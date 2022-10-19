@@ -7,7 +7,6 @@
     <fragment
         android:id="@+id/nav_stats"
         android:name="com.bignerdranch.android.tms.controllers.ui.dashboard.stats.StatisticsFragment"
-        android:label="Statistics"
-        />
+        android:label="Statistics" />
 
 </navigation>

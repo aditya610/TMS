@@ -55,7 +55,7 @@ class ReservationListFragment : Fragment(R.layout.fragment_reservation_list) {
         })
     }
 
-    private fun intializeViews(view: View){
+    private fun intializeViews(view: View) {
         addReservation = view.findViewById(R.id.list_reservation_add_reservation)
         rvReservationList = view.findViewById(R.id.rvreservationslist)
 
