@@ -18,4 +18,13 @@ interface UserDao {
 
     @Query("SELECT * FROM user")
     suspend fun getUserList(): List<User>
+
+    @Query("DELETE FROM user where mobileNo=(:mobileNo)")
+    suspend fun deleteUser(mobileNo: Long)
+
+    @Query("SELECT COUNT(*) FROM user")
+    suspend fun gettotalReservations(): Int
+
+    @Query("SELECT COUNT(*) FROM USER WHERE status=(:status)")
+    suspend fun getReservationCountByStatus(status: String): Int
 }

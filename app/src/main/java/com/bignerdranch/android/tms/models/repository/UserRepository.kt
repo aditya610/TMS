@@ -15,4 +15,9 @@ class UserRepository @Inject constructor(
 
     suspend fun getUserList() = userDao.getUserList()
 
+    suspend fun deleteUser(mobileNo: Long) = userDao.deleteUser(mobileNo)
+
+    suspend fun getTotalReservation() = userDao.gettotalReservations()
+
+    suspend fun getReservationCountByStatus(status: String) = userDao.getReservationCountByStatus(status)
 }

@@ -1,35 +1,26 @@
 package com.bignerdranch.android.tms.controllers.ui.dashboard.stats
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.ColorSpace
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
-import android.widget.ImageView
-import androidx.core.graphics.toColor
-import androidx.core.os.persistableBundleOf
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.anychart.AnyChart
 import com.anychart.AnyChartView
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.anychart.charts.Pie
 import com.bignerdranch.android.tms.R
-import com.bignerdranch.android.tms.common.data.SeedData
 import com.bignerdranch.android.tms.controllers.ui.tablereservation.TableController
-import com.bignerdranch.android.tms.controllers.ui.tablereservation.tablelist.repeatWithViewLifecycle
+import com.bignerdranch.android.tms.databinding.FragmentStatisticsBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class StatisticsFragment : Fragment() {
 
-    private lateinit var anyChartTable: AnyChartView
-    private lateinit var editStats: ImageButton
     private val viewModel: StatsViewModel by viewModels()
 
     override fun onCreateView(
@@ -38,43 +29,47 @@ class StatisticsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         viewModel.initialize()
-        val view = inflater.inflate(R.layout.fragment_statistics, container, false)
-        return view
-    }
+        val binding = DataBindingUtil.inflate<FragmentStatisticsBinding>(
+            inflater,R.layout.fragment_statistics, container, false)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        intializeViews(view)
+        setPie(10,20,binding.anyChartTable)
 
-        val pieColorChart = arrayOf("#550CAE", "#3044E8")
-        val pie = AnyChart.pie();
-        val pieData = mutableListOf<ValueDataEntry>()
-        pieData.add(ValueDataEntry(getString(R.string.table_left), 10))
-        pieData.add(ValueDataEntry(getString(R.string.table_Occupied), 20))
-        pie.data(pieData.toList())
-        pie.palette(pieColorChart)
-        anyChartTable.setChart(pie)
+        viewModel.tableLeft.observe(
+            viewLifecycleOwner,
+            Observer {
+                //setPie(viewModel.tableLeft.value!! ,viewModel.tableOccupied.value!! , binding.anyChartTable)
+            }
+        )
 
-        editStats.setOnClickListener({
+        viewModel.tableOccupied.observe(
+            viewLifecycleOwner,
+            Observer {
+                //setPie(viewModel.tableLeft.value!! ,viewModel.tableOccupied.value!! , binding.anyChartTable)
+            }
+        )
+        binding.editStats.setOnClickListener({
             val intent = Intent(context, TableController::class.java)
             startActivity(intent)
         })
+        return binding.root
     }
 
-    private fun intializeViews(view: View) {
-        anyChartTable = view.findViewById(R.id.any_chart_table)
-        editStats = view.findViewById(R.id.editStats)
+    fun setPie(p1: Int, p2: Int, anyChartTable: AnyChartView)
+    {
+        if (p1!= null && p2!= null){
+            val pieColorChart = arrayOf("#550CAE", "#3044E8")
+            val pie = AnyChart.pie();
+            val pieData = mutableListOf<ValueDataEntry>()
+            pieData.add(ValueDataEntry(getString(R.string.table_left), p1))
+            pieData.add(ValueDataEntry(getString(R.string.table_Occupied), p2))
+            pie.data(pieData.toList())
+            pie.palette(pieColorChart)
+            anyChartTable.setChart(pie)
+            }
     }
-
 
 }
-//repeatWithViewLifecycle {
-//    launch {
-//        viewModel.tableLeft.collect{
-//            pieData.add(ValueDataEntry(getString(R.string.table_left), it))
-//            pieData.add(ValueDataEntry(getString(R.string.table_Occupied),viewModel.tableOccupied.value))
-//            setChart(pieData,pie)
-//        }
-//    }
-//}
+
 

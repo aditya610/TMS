@@ -1,225 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="0.5"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.bignerdranch.android.tms.controllers.ui.dashboard.stats.StatsViewModel" />
+    </data>
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            <ImageButton
-                android:id="@+id/editStats"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="10dp"
-                android:background="@drawable/ic_edit" />
-
-            <TextView
-                android:id="@+id/tvtablechartheading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/cabinbold"
-                android:text="@string/table_percentage_chart"
-                android:textColor="#171515"
-                android:textSize="20sp" />
-
-
-            <com.anychart.AnyChartView
-                android:id="@+id/any_chart_table"
-                android:layout_width="300dp"
-                android:layout_height="300dp"
-                android:layout_below="@id/tvtablechartheading"
-                android:layout_alignParentLeft="true"
-                android:layout_marginBottom="15dp" />
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="0.2"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0.5"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="5dp">
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/peopleicon" />
-
-            <TextView
+            <RelativeLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/madabold"
-                android:gravity="center"
-                android:text="@string/total_capacity"
-                android:textSize="15sp" />
+                android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="150"
-                android:textColor="#000000"
-                android:textSize="25sp" />
+                <ImageButton
+                    android:id="@+id/editStats"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ic_edit" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/madabold"
-                android:gravity="center"
-                android:text="@string/capacity_occupied"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="100"
-                android:textColor="#000000"
-                android:textSize="25sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/madabold"
-                android:gravity="center"
-                android:text="@string/capacity_left"
-                android:textSize="15sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:gravity="center"
-                android:text="30"
-                android:textColor="#000000"
-                android:textSize="25sp" />
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="0.2"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp">
+                <TextView
+                    android:id="@+id/tvtablechartheading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/cabinbold"
+                    android:text="@string/table_percentage_chart"
+                    android:textColor="#171515"
+                    android:textSize="20sp" />
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
+                <com.anychart.AnyChartView
+                    android:id="@+id/any_chart_table"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/tvtablechartheading"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginBottom="15dp" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical">
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0.2"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="5dp">
 
-            <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/reservationicon" />
-
-            <TextView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                android:fontFamily="@font/madabold"
-                android:gravity="center"
-                android:text="@string/total_reservations"
-                android:textSize="15sp" />
+                android:orientation="vertical">
 
-            <TextView
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/peopleicon" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/madabold"
+                    android:gravity="center"
+                    android:text="@string/total_capacity"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_total_capacity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{viewModel.totalCapacity}"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/madabold"
+                    android:gravity="center"
+                    android:text="@string/capacity_occupied"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_capacity_occupied"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{viewModel.capacityOccupied}"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/madabold"
+                    android:gravity="center"
+                    android:text="@string/capacity_left"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_capacity_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.capacityLeft}"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0.2"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="5dp">
+
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:text="100"
-                android:textColor="#000000"
-                android:textSize="25sp" />
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/madabold"
-                android:gravity="center"
-                android:text="@string/reservations_completed"
-                android:textSize="15sp" />
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/reservationicon" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="70"
-                android:textColor="#000000"
-                android:textSize="25sp" />
+                <TextView
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/madabold"
-                android:gravity="center"
-                android:text="@string/reservations_left"
-                android:textSize="15sp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/madabold"
+                    android:gravity="center"
+                    android:text="@string/total_reservations"
+                    android:textSize="15sp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="5dp"
-                android:gravity="center"
-                android:text="30"
-                android:textColor="#000000"
-                android:textSize="25sp" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/tv_total_reservation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{viewModel.totalReservations}"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
 
-</LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/madabold"
+                    android:gravity="center"
+                    android:text="@string/reservations_completed"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_reservation_completed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="@{viewModel.reservationCompleted}"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="10dp"
+                    android:fontFamily="@font/madabold"
+                    android:gravity="center"
+                    android:text="@string/reservations_left"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_reservations_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:gravity="center"
+                    android:text="@{viewModel.reservationLeft}"
+                    android:textColor="#000000"
+                    android:textSize="25sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>
