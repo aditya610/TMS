@@ -32,5 +32,10 @@ class TableFloorRepository @Inject constructor(
 
     suspend fun getTables() = tableFloorDao.getTables()
 
+    suspend fun getTotalCapacity() = tableFloorDao.getTotalCapacity()
+
+    suspend fun getCapacityByStatus(status: String) = tableFloorDao.getCapacityByStatus(status)
+
+    suspend fun getTableCountByStatus(status: String) =tableFloorDao.getTableCountByStatus(status)
 
 }

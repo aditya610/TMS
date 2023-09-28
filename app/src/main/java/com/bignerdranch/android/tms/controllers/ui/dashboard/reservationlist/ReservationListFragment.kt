@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -18,6 +19,7 @@ import com.bignerdranch.android.tms.R
 import com.bignerdranch.android.tms.controllers.ui.reservation.ReservationController
 import com.bignerdranch.android.tms.controllers.ui.reservation.ReservationViewModel
 import com.bignerdranch.android.tms.controllers.ui.reservation.ResevationListRecyclerAdapter
+import com.bignerdranch.android.tms.controllers.ui.reservationList.ReservationListController
 import com.bignerdranch.android.tms.controllers.ui.tablereservation.tablelist.repeatWithViewLifecycle
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -28,6 +30,7 @@ class ReservationListFragment : Fragment(R.layout.fragment_reservation_list) {
     private val viewModel: ReservationListViewModel by viewModels()
     private lateinit var rvReservationList: RecyclerView
     private lateinit var addReservation: Button
+    private lateinit var viewAll: TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,7 +46,7 @@ class ReservationListFragment : Fragment(R.layout.fragment_reservation_list) {
         repeatWithViewLifecycle {
             launch {
                 viewModel.userList.collect {
-                    val adapter = ResevationListRecyclerAdapter(it)
+                    val adapter = ResevationListRecyclerAdapter(it, viewModel)
                     rvReservationList.layoutManager = LinearLayoutManager(context)
                     rvReservationList.adapter = adapter
                 }
@@ -53,11 +56,16 @@ class ReservationListFragment : Fragment(R.layout.fragment_reservation_list) {
             val intent = Intent(context, ReservationController::class.java)
             startActivity(intent)
         })
+        viewAll.setOnClickListener({
+            val intent = Intent(context, ReservationListController::class.java)
+            startActivity(intent)
+        })
     }
 
     private fun intializeViews(view: View) {
         addReservation = view.findViewById(R.id.list_reservation_add_reservation)
         rvReservationList = view.findViewById(R.id.rvreservationslist)
+        viewAll = view.findViewById(R.id.tvviewall)
 
     }
 

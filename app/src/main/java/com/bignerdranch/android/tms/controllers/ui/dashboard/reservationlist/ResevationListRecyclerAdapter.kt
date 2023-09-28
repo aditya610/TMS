@@ -7,12 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.tms.R
 import com.bignerdranch.android.tms.common.data.SeedData
+import com.bignerdranch.android.tms.controllers.ui.dashboard.reservationlist.ReservationListViewModel
 import com.bignerdranch.android.tms.models.data.User
 
-class ResevationListRecyclerAdapter(val list: List<User>) :
+class ResevationListRecyclerAdapter(val list: List<User>, val viewModel: ReservationListViewModel) :
     RecyclerView.Adapter<ReservationHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ReservationHolder {
@@ -31,6 +33,19 @@ class ResevationListRecyclerAdapter(val list: List<User>) :
             intent.putExtra(SeedData.reservationKey, list[position].mobileNo.toString())
             holder.itemView.context.startActivity(intent)
         })
+        holder.deleteReservation.setOnClickListener({
+            Toast.makeText(it.context,list[position].mobileNo.toString(),Toast.LENGTH_SHORT).show()
+            deleteReservations(position)
+        })
+    }
+
+    private fun deleteReservations(position: Int) {
+
+        viewModel.deleteUser(list[position].mobileNo)
+        val item = list[position]
+        (list as MutableList).remove(item)
+        notifyItemChanged(position)
+
     }
 
     override fun getItemCount(): Int = list.size
@@ -42,6 +57,7 @@ class ReservationHolder(view: View) : RecyclerView.ViewHolder(view) {
     val status: TextView = view.findViewById(R.id.tvstatus)
     val group: TextView = view.findViewById(R.id.tvgroup)
     val editReservation: ImageButton = view.findViewById(R.id.edit_reservation)
+    val deleteReservation: ImageButton = view.findViewById(R.id.delete_reservation)
 
 }
 

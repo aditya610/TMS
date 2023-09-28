@@ -119,7 +119,7 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_table_status_"
+            android:id="@+id/table_status_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ll_main"
@@ -134,7 +134,7 @@
             android:id="@+id/sp_table_status"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_table_status_"
+            android:layout_below="@+id/table_status_tv"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="20dp"
             android:background="@drawable/spinner_background_status"

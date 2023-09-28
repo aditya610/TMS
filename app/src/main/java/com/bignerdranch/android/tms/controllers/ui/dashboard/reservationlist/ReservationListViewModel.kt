@@ -17,6 +17,12 @@ class ReservationListViewModel @Inject constructor(
     private var _userList = MutableStateFlow<List<User>>(emptyList())
     val userList = _userList
 
+    fun deleteUser(mobileNo: Long){
+        viewModelScope.launch {
+            userRepository.deleteUser(mobileNo)
+        }
+    }
+
     fun intialize() {
         viewModelScope.launch {
             _userList.value = userRepository.getUserList()

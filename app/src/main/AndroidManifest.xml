@@ -16,6 +16,8 @@
         <activity
             android:name=".controllers.ui.reservation.ReservationController"
             android:exported="false"></activity>
+        <activity android:name=".controllers.ui.reservationList.ReservationListController"
+            android:exported="false"></activity>
         <activity
             android:name=".controllers.ui.dashboard.DashboardController"
             android:exported="true">

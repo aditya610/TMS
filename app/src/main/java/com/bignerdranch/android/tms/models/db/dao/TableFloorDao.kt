@@ -61,12 +61,18 @@ interface TableFloorDao {
     suspend fun getColumnFromFloor(floorNo: Int): Int
 
     @Query("Select Count(*) from `table`where tableStatus = (:status)")
-    fun getTableCountByStatus(status: String):Flow<Int>
+    suspend fun getTableCountByStatus(status: String): Int
 
     @Query("Select Count(*) from `table`")
     fun getTableCount():Flow<Int>
 
     @Query("Select Count(*) from `table`")
     suspend fun getTables(): Int
+
+    @Query("Select SUM(tableCapacity) from `table`")
+    suspend fun getTotalCapacity(): Int
+
+    @Query("Select SUM(tableCapacity) from `table` where tableStatus = (:status)")
+    suspend fun getCapacityByStatus(status: String): Int
 
 }

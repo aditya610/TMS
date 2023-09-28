@@ -53,6 +53,7 @@
     <string name="success">Success!</string>
     <string name="table_reserve">Your table has been reserve</string>
     <string name="go_to_dashboard">Go to dashboard</string>
+    <string name="viewAll">View all</string>
 
 
 </resources>
